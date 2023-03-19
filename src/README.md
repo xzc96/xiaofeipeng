@@ -20,30 +20,73 @@ projects:
     link: https://theme-hope.vuejs.press/zh/
 
   - icon: link
-    name: 链接名称
-    desc: 链接详细描述
-    link: https://链接地址
+    name: pdai
+    desc: Java 全栈知识体系
+    link: https://pdai.tech/
+
+  - icon: link
+    name: 互联网 Java 工程师进阶知识完全扫盲
+    desc: 本系列知识由 Doocs 技术社区总结发布，内容涵盖高并发、分布式、高可用、微服务、海量数据处理等
+    link: https://doocs.gitee.io/advanced-java/#/
+
+  - icon: /favicon2.ico
+    name: 陌溪的学习笔记
+    desc: 陌溪的学习笔记
+    link: http://moxi159753.gitee.io/learningnotes/#/
 
   - icon: book
-    name: 书籍名称
-    desc: 书籍详细描述
-    link: https://你的书籍链接
+    name: JavaGuide
+    desc: 「Java学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。
+    link: https://javaguide.cn/
 
-  - icon: article
-    name: 文章名称
-    desc: 文章详细描述
-    link: https://你的文章链接
+  - icon: /icon.jpg
+    name: Java工程师成神之路
+    desc: To Be Top Javaer - Java工程师成神之路
+    link: https://hollischuang.gitee.io/tobetopjavaer/#/menu
 
-  - icon: friend
-    name: 伙伴名称
-    desc: 伙伴详细介绍
-    link: https://你的伙伴链接
+  - icon: link
+    name: bugstack
+    desc: bugstack 虫洞栈
+    link: https://bugstack.cn/
 
-  - icon: /logo.svg
-    name: 自定义项目
-    desc: 自定义详细介绍
-    link: https://你的自定义链接
+  - icon: https://static.leetcode.cn/cn-mono-assets/production/assets/logo-dark-cn.4c5e285b.svg
+    name: leetcode
+    desc: 力扣
+    link: https://leetcode.cn/
+
+  - icon: link
+    name: java8在线文档
+    desc: java8在线文档
+    link: https://docs.oracle.com/javase/8/docs/
+
+  - icon: https://www.macrozheng.com/logo.svg
+    name: mall
+    desc: mall学习教程
+    link: https://www.macrozheng.com/
+
+  - icon: http://doc.ruoyi.vip/images/logo.png
+    name: RuoYi
+    desc: RuoYi学习教程
+    link: http://doc.ruoyi.vip/ruoyi/
+
+  - icon: link
+    name: 图说设计模式
+    desc: 图说设计模式
+    link: https://design-patterns.readthedocs.io/zh_CN/latest/index.html
+
+  - icon: https://img.alicdn.com/tfs/TB13DzOjXP7gK0jSZFjXXc5aXXa-212-48.png
+    name: 阿里云开发者学堂
+    desc: 阿里云开发者学堂
+    link: https://developer.aliyun.com/learning?spm=a2c6h.12873639.J_5404914170.19.4780461bXHZsH9
+
+  - icon: link
+    name: stackoverflow
+    desc: 寻找问题答案的好帮手
+    link: https://stackoverflow.com/
+
+
 
 footer: 子在川上曰：“逝者如斯夫，不舍昼夜。”
 ---
 
+<CommentService />

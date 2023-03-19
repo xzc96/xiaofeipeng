@@ -2,7 +2,7 @@ import { defineUserConfig } from "vuepress";
 import { themeConfig } from "./themeConfig";
 import {shikiPlugin} from "@vuepress/plugin-shiki";
 import { searchPlugin } from "@vuepress/plugin-search";
-
+import { commentPlugin } from "vuepress-plugin-comment2";
 export default defineUserConfig({
   base: "/xiaofeipeng/",
   theme: themeConfig,
@@ -65,6 +65,19 @@ export default defineUserConfig({
           placeholder: "搜索",
         },
       },
+    }),
+
+    // 评论 npm i -D vuepress-plugin-comment2
+    commentPlugin({
+      // https://giscus.app/zh-CN#repository
+      // 插件选项
+      provider: "Giscus",
+      comment: true, //启用评论功能
+      repo: "cuckoocry/xiaofeipeng", //远程仓库
+      repoId: "R_kgDOJLYAww", //对应自己的仓库Id
+      category: "Announcements",
+      categoryId: "DIC_kwDOJLYAw84CU-hL" //对应自己的分类Id
+
     }),
   ],
 

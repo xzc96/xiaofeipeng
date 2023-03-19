@@ -6,7 +6,7 @@ export const themeConfig = hopeTheme({
   logo: "/xiaofeipeng.png",
   hostname: "https://xiaofeipeng.tech/",
   author: {
-    name: "cuckoo",
+    name: "小飞蓬",
     //url: "https://javaguide.cn/article/",
   },
   /*主题色选择器*/
@@ -46,7 +46,7 @@ export const themeConfig = hopeTheme({
       // Gitee: "https://example.com",
       GitHub: "https://github.com/cuckoocry/xiaofeipeng",
       // Gitlab: "https://example.com",
-      // Gmail: "https://example.com",
+      Gmail: "https://jiangyunfei888@gmail.com",
       // Instagram: "https://example.com",
       // Lark: "https://example.com",
       // Lines: "https://example.com",
@@ -66,8 +66,8 @@ export const themeConfig = hopeTheme({
       // Zhihu: "https://example.com",
     },
   },
-  footer:
-    '<a href="https://beian.miit.gov.cn/" target="_blank">蜀ICP备2021011092号-2</a>',
+  footer: "子在川上曰：“逝者如斯夫，不舍昼夜。”",
+    // '<a href="https://beian.miit.gov.cn/" target="_blank">蜀ICP备2021011092号-2</a>',
   displayFooter: true,
   plugins: {
     blog: true,
@@ -115,6 +115,6 @@ export const themeConfig = hopeTheme({
     },
     feed: {
       json: true,
-    },
+    }
   },
 });
