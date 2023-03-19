@@ -3,7 +3,7 @@ import { navbarConfig } from "./navbar";
 import { sidebarConfig } from "./sidebar";
 
 export const themeConfig = hopeTheme({
-  logo: "/index-read.gif",
+  logo: "/xiaofeipeng.png",
   hostname: "https://xiaofeipeng.tech/",
   author: {
     name: "cuckoo",
