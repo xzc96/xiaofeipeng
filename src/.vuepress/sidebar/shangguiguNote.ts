@@ -144,4 +144,15 @@ export const shangguiguNote = [
     ],
 
   },
+  {
+    text: "springcloud",
+    icon: "edit",
+    prefix: "springcloud/",
+    collapsible: true,
+    children: [
+      ""
+    //     springcloud  目录
+    ],
+
+  },
 ];
