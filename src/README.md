@@ -54,7 +54,7 @@ projects:
     desc: 力扣
     link: https://leetcode.cn/
 
-  - icon: link
+  - icon: /java-documentation.png
     name: java8在线文档
     desc: java8在线文档
     link: https://docs.oracle.com/javase/8/docs/
