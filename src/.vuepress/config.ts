@@ -4,7 +4,7 @@ import {shikiPlugin} from "@vuepress/plugin-shiki";
 import { searchPlugin } from "@vuepress/plugin-search";
 
 export default defineUserConfig({
-  base: "/",
+  base: "./",
   theme: themeConfig,
   title: "阿飞的博客",
   description: "vuepress-theme-hope 阿飞的博客",

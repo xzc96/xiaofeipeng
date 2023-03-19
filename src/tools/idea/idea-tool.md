@@ -5,6 +5,8 @@ tags:
  - 工具
 ---
 
+> 其他：https://gitee.com/SnailClimb/awesome-idea-tutorial
+
 ### 关闭IDEA格式化注释
 >IDEA在格式化模板的时候会把注释一起格式化，导致排好序的方法或者类注释顺序错乱。
 

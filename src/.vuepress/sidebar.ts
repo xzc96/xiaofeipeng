@@ -345,12 +345,7 @@ export const sidebarConfig = sidebar({
           icon: "docker1",
           prefix: "docker/",
           children: ["docker-intro", "docker-in-action"],
-        },
-        {
-          text: "IDEA",
-          icon: "intellijidea",
-          link: "https://gitee.com/SnailClimb/awesome-idea-tutorial",
-        },
+        }
       ],
     },
     {
