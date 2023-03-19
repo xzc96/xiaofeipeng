@@ -12,7 +12,7 @@ export const navbarConfig = navbar([
   { text: "开源项目", icon: "github", link: "/open-source-project/" },
   // { text: "技术书籍", icon: "book", link: "/books/" },
   { text: "工具", icon: "book", link: "/tools/" },
-  { text: "技术文章", icon: "article", link: "/high-quality-technical-articles/" },
+  // { text: "技术文章", icon: "article", link: "/high-quality-technical-articles/" },
   {
     text: "网站相关",
     icon: "about",
