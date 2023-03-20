@@ -3,8 +3,8 @@ icon: creative
 title: Java学习&&面试指南
 ---
 
-::: tip 友情提示
-
+::: tip 
+ TODO   精简面试题。修改加东西。结合java编程思想。
 :::
 
 
