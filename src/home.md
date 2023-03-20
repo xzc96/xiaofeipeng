@@ -404,4 +404,15 @@ TODO
 2、加强spring，SpringCloud的的学习   
 3、梳理，记忆，完善简历   
 
+一些 awesome（awesome系列是Github上一个超有名的Topic，本名：Awesome Lists。目测但凡是有一定知名度的领域，都有着自己的awesome-XXXX项目。）    
+repo （repo是report的缩写，意思是报告、总结）
+> https://github.com/AobingJava/JavaFamily  
+> https://github.com/XiangLinPro/IT_book
+> https://github.com/yangchong211/YCBlogs
+> https://github.com/h2pl/Java-Tutorial
 
+
+## 玩一玩
+
+springboot 集成 compileflow  工作流
+> https://github.com/alibaba/compileflow/blob/master/README_CN.md
