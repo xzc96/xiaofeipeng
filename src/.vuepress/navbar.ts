@@ -6,8 +6,8 @@ export const navbarConfig = navbar([
   //   TODO 数据库 中间件 算法 spring  方法论
   { text: "学习笔记", icon: "book", link: "/尚硅谷学习笔记/" },
   { text: "面试指南", icon: "java", link: "/home.md" },
-  { text: "开源项目", icon: "github", link: "/open-source-project/" },
-  // { text: "技术书籍", icon: "book", link: "/books/" },
+  { text: "开源项目推荐", icon: "github", link: "/open-source-project/" },
+  { text: "书籍推荐", icon: "book", link: "/books/" },
   { text: "工具", icon: "book", link: "/tools/" },
   // { text: "技术文章", icon: "article", link: "/high-quality-technical-articles/" },
   {

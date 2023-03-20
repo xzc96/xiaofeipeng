@@ -1,4 +1,5 @@
 export const shangguiguNote = [
+  //  学习笔记目录
   {
     text: "大厂面试第二季",
     icon: "edit",
@@ -78,7 +79,7 @@ export const shangguiguNote = [
       "11_redis/",
       "12_集群高并发情况下如何保证分布式唯一全局Id生成/"
     ],
-    
+
   },
   {
     text: "JVM",
@@ -145,13 +146,27 @@ export const shangguiguNote = [
 
   },
   {
-    text: "springcloud",
+    text: "SpringCloud",
     icon: "edit",
-    prefix: "springcloud/",
+    prefix: "SpringCloud/",
     collapsible: true,
     children: [
-      ""
-    //     springcloud  目录
+      "",
+      "1_SpringCloud是什么/",
+      "2_搭建一个SpringCloud项目/",
+      "3_搭建Eureka集群/",
+      "4_Eureka停更后的替换/",
+      "5_Ribbon负载均衡/",
+      "6_OpenFeign实现服务调用/",
+      "7_Hystrix中的服务降级和熔断/",
+      "8_服务网关Gateway/",
+      "9_分布式配置中心SpringCloudConfig/",
+      "10_消息总线Bus/",
+      "11_消息驱动SpringCloudStream/",
+      "12_SpringCloudSleuth分布式请求链路跟踪/",
+      "13_Nacos是什么/",
+      "14_SpringCloudAlibabaSentinel实现熔断和限流/",
+      "15_SpringCloudAlibabaSeata处理分布式事务/"
     ],
 
   },

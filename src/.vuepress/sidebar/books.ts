@@ -30,4 +30,10 @@ export const books = [
     link: "distributed-system",
     icon: "distributed-network",
   },
+
+  {
+    text: "生活",
+    link: "like-books.md",
+    icon: "book",
+  },
 ];

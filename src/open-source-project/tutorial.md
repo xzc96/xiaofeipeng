@@ -1,7 +1,8 @@
 ---
 title: Java 优质开源技术教程
 category: 开源项目
-icon: "book"
+icon: 
+ - book
 ---
 
 ## Java

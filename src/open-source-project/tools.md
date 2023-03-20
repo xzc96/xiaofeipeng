@@ -1,7 +1,9 @@
 ---
 title: Java 优质开源开发工具
-category: 开源项目
-icon: tool
+category: 
+ - 开源项目
+icon:
+ - tool
 ---
 
 ## Java
