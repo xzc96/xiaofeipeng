@@ -5,6 +5,8 @@ category:
 icon: 
  - ruoyi
 ---
+## RuoYi-Vue-Jiang
+
 
 ## RuoYi-App-Jiang
 
@@ -30,3 +32,5 @@ http://8.129.222.111:9000/
 1、后端重新部署ruoyi-jiang
 2、app打包在微信小程序
 
+或者：
+https://uniapp.dcloud.net.cn/tutorial/build/publish-mp-weixin-cli.html
