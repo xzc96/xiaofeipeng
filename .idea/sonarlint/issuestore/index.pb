@@ -25,8 +25,6 @@ Q
 !src/.vuepress/styles/palette.scss,f\3\f3cc6e32958594a54549de16c894869b601c962d
 �
 ]src/尚硅谷学习笔记/SpringCloud/2_搭建一个SpringCloud项目/Cloud2020/Cloud2020.iml,4\7\471a29ab208fee070158708c4d3114a91c9ff7c8
-<
-package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 �
 Wsrc/尚硅谷学习笔记/SpringCloud/2_搭建一个SpringCloud项目/Cloud2020/pom.xml,b\a\ba53daf648f18bd7ede4c360ed1b513e6b916945
 \
