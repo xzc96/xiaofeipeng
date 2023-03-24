@@ -16,13 +16,13 @@ icon:
 
 > https://civitai.com/models/12975/koreanstyle25d
 
-![image-20230312213010117](.\images\image-20230312213010117.png)
+![image-20230312213010117](./images/image-20230312213010117.png)
 
 ## perfectWorld_v2Baked.safetensors
 
 > 完美世界 https://civitai.com/models/8281/perfect-world
 
-![image-20230312092629980](.\各个模块和Lora\images\image-20230312092629980.png)
+![image-20230312092629980](./各个模块和Lora/images/image-20230312092629980.png)
 
 
 
@@ -32,31 +32,31 @@ icon:
 
 >  新桓结衣  https://civitai.com/models/8416/gakki-or-aragaki-yui-or
 
-![image-20230312091548157](.\images\image-20230312091548157.png)
+![image-20230312091548157](./images/image-20230312091548157.png)
 
 ## hipoly3DModelLora_v10.safetensors
 
 > https://civitai.com/models/8730/hipoly-3d-model-lora
 
-![image-20230312091722448](.\images\image-20230312091722448.png)
+![image-20230312091722448](./images/image-20230312091722448.png)
 
 ## samdoesartsSamYang_offsetRightFilesize.safetensors
 
 > https://civitai.com/models/6638/samdoesarts-sam-yang-style-lora
 
-![image-20230312091904425](.\images\image-20230312091904425.png)
+![image-20230312091904425](./images/image-20230312091904425.png)
 
 ## dilrabaDilmurat_v1.safetensors
 
 > 迪丽热巴 https://civitai.com/models/10121/dilraba-dilmurat
 
-![image-20230312092015176](.\images\image-20230312092015176.png)
+![image-20230312092015176](./images/image-20230312092015176.png)
 
 ## chilloutmixss30_v30.safetensors
 
 > https://civitai.com/models/16274/chilloutmixss30
 
-![image-20230312092154219](.\images\image-20230312092154219.png)
+![image-20230312092154219](./images/image-20230312092154219.png)
 
 ```
 1girl
@@ -78,23 +78,23 @@ Steps: 30, Sampler: DPM++ 2M Karras, CFG scale: 7
 
 > 狗头萝莉 https://civitai.com/models/12030/goutou-lora
 
-![image-20230312092841788](.\images\image-20230312092841788.png)
+![image-20230312092841788](./images/image-20230312092841788.png)
 
 ## koreanDollLikenesss_v10.safetensors
 
 > 韩国娃娃造型 https://civitai.com/models/11619/korean-doll-likenesss
 
-![image-20230312093022749](.\images\image-20230312093022749.png)
+![image-20230312093022749](./images/image-20230312093022749.png)
 
 ## irene_V70.safetensors
 
 > 韩团Red Velvet成员 https://civitai.com/models/11096/irene
 
-![image-20230312093735687](.\images\image-20230312093735687.png)
+![image-20230312093735687](./images/image-20230312093735687.png)
 
 ## suzy_V20.safetensors
 
 >  https://civitai.com/models/12930/suzy
 
-![image-20230312094019933](.\images\image-20230312094019933.png)
+![image-20230312094019933](./images/image-20230312094019933.png)
 

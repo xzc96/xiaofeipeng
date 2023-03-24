@@ -1,4 +1,4 @@
-export const books = [
+export const ai = [
   {
     text: "AI画图-第一次尝试",
     link: "first-test",

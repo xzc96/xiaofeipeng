@@ -8,7 +8,7 @@ icon:
 
 1. 下载stable-diffusion-webui_23-03-10
 
-![image-20230311180250810](.\images\image-20230311180250810.png)
+![image-20230311180250810](./images/image-20230311180250810.png)
 
 
 
@@ -70,29 +70,29 @@ tag编写
 
 模型类型
 
-![img](.\images\ed7e8e271c6bef8056f354e56088c525eac48e44.jpg@690w_!web-note.webp)
+![img](./images/ed7e8e271c6bef8056f354e56088c525eac48e44.jpg@690w_!web-note.webp)
 
 
 
-![img](.\images\0b40ade1b920522fe19d2bdea95b404f990d7814.jpg@690w_!web-note.webp)
+![img](./images/0b40ade1b920522fe19d2bdea95b404f990d7814.jpg@690w_!web-note.webp)
 
 训练教程：https://www.bilibili.com/video/BV1N44y1X71h/
 
 *最新版的web UI可以点击粉红色按钮查看训练的模型
 
-![img](.\images\bf2143aa8eb272c440d7db4d7d988444d1205aa7.jpg@690w_!web-note.webp)
+![img](./images/bf2143aa8eb272c440d7db4d7d988444d1205aa7.jpg@690w_!web-note.webp)
 
 
 
-![img](.\images\050aa3a5e80555c5340448ce65baf7a37daebf91.jpg@690w_!web-note.webp)
+![img](./images/050aa3a5e80555c5340448ce65baf7a37daebf91.jpg@690w_!web-note.webp)
 
 训练教程：https://www.bilibili.com/video/BV1Gd4y1s7RW
 
-![img](.\images\dd44d5fe42e18c921356717c3c395eeeb3252783.jpg@690w_!web-note.webp)
+![img](./images/dd44d5fe42e18c921356717c3c395eeeb3252783.jpg@690w_!web-note.webp)
 
 
 
-![img](.\images\2441f86061c9957f15891e61f2caab292233e27a.jpg@690w_!web-note.webp)
+![img](./images/2441f86061c9957f15891e61f2caab292233e27a.jpg@690w_!web-note.webp)
 
 推荐用这种方式训练角色，效果最好
 
@@ -100,15 +100,15 @@ tag编写
 
 训练教程：https://www.bilibili.com/video/BV1ss4y1s7ta
 
-![img](.\images\ad552c41a733546e15fcdee0fb8323211986e0d2.jpg@690w_!web-note.webp)
+![img](./images/ad552c41a733546e15fcdee0fb8323211986e0d2.jpg@690w_!web-note.webp)
 
 
 
-![img](.\images\2f16f0ebe54802a66742f365b24fabec582c720b.jpg@690w_!web-note.webp)
+![img](./images/2f16f0ebe54802a66742f365b24fabec582c720b.jpg@690w_!web-note.webp)
 
 Additional Networks里加载，启用lora（使用插件）
 
-![img](.\images\48e91af0ed17cf10371f137093a442bfdee8ff27.jpg@690w_!web-note.webp)
+![img](./images/48e91af0ed17cf10371f137093a442bfdee8ff27.jpg@690w_!web-note.webp)
 
 （不使用插件）
 
@@ -118,7 +118,7 @@ Additional Networks里加载，启用lora（使用插件）
 
 https://www.bilibili.com/video/BV1gd4y15798
 
-![img](.\images\6a99b69e166afa5552809fd96fb46f509e786f33.jpg@690w_!web-note.webp)
+![img](./images/6a99b69e166afa5552809fd96fb46f509e786f33.jpg@690w_!web-note.webp)
 
 
 
@@ -146,6 +146,7 @@ https://huggingface.co
 
 ### type: lora
 
+```shell
 extensions\sd-webui-additional-networks\models\lora 
 
 models/lora
@@ -166,6 +167,9 @@ E:\stable-diffusion-webui_23-03-10\models\Stable-diffusion
 
 
 
+```
+
+
 ### 负面tag
 
 lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, bad feet,
@@ -182,9 +186,9 @@ Negative prompt: (worst quality, low quality:1.3), old, logo, watermark
 
 Steps: 25, Sampler: DPM++ 2M Karras, CFG scale: 7, Seed: 377146066, Size: 512x768, Denoising strength: 0.5, Clip skip: 2, ENSD: 31337, Hires upscale: 2, Hires upscaler: R-ESRGAN 4x+
 
-![image-20230311221525063](.\images\image-20230311221525063.png)
+![image-20230311221525063](./images/image-20230311221525063.png)
 
-![image-20230311221525063](.\images\image-20230311221525063.png)
+![image-20230311221525063](./images/image-20230311221525063.png)
 
 ```
 ultra realistic 8k cg, picture-perfect face, flawless, clean, masterpiece, professional artwork, famous artwork, cinematic lighting, cinematic bloom, perfect face, beautiful face, beautiful eyes, ((perfect female body, narrow waist)), white|blue|green hair, red eyes, gorgeous queen, royal, divine, goddess, godlike, nature palyground, fantasy, dreamlike, unreal, science fiction, big breasts, beautiful clothes, lace, lace trim, lace-trimmed legwear, nsfw, breasts out, absurdly long hair, very long hair, (rich:1.4), prestige, luxury, jewelry, diamond, gold, pearl, gem, sapphire, ruby, emerald, intricate detail, delicate pattern, sexy, charming, alluring, seductive, erotic, enchanting, hair ornament, necklace, earrings, bracelet, armlet, (pubes:1.5), <lora:SexyWoman_V10:0.4> <lora:Hipoly3DModelLora_v10:0.6>

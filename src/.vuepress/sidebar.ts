@@ -2,6 +2,7 @@ import { sidebar } from "vuepress-theme-hope";
 import { highQualityTechnicalArticles } from "./sidebar/high-quality-technical-articles";
 import { aboutTheAuthor } from "./sidebar/about-the-author";
 import { books } from "./sidebar/books";
+import { ai } from "./sidebar/ai";
 import { openSourceProject } from "./sidebar/open-source-project";
 import { shangguiguNote } from "./sidebar/shangguiguNote";
 import {essay} from "./sidebar/essay";
@@ -13,6 +14,7 @@ export const sidebarConfig = sidebar({
   "/books/": books,
   "/posts/": essay,
   "/尚硅谷学习笔记/": shangguiguNote,
+  "/ai/": ai,
   "/about-the-author/": aboutTheAuthor,
   "/high-quality-technical-articles/": highQualityTechnicalArticles,
   // 必须放在最后面
