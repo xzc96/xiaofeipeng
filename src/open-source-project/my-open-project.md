@@ -7,6 +7,28 @@ icon:
 ---
 ## RuoYi-Vue-Jiang
 
+### 1、后端打包，将jar放进
+```shell
+/usr/local/src/ruoyi-jiang
+
+```
+执行脚本：
+```shell
+
+```
+或者：
+```shell
+nohup java -jar ruoyi-admin.jar >log_ruoyi.txt &
+```
+### 2、前端打包，将dist里面的内容放进
+```shell
+/home/nginx/www/html
+```
+### 3、检查
+```shell
+ps aux | grep java
+```
+
 
 ## RuoYi-App-Jiang
 
