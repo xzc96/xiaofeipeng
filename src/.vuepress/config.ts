@@ -3,6 +3,7 @@ import { themeConfig } from "./themeConfig";
 import {shikiPlugin} from "@vuepress/plugin-shiki";
 import { searchPlugin } from "@vuepress/plugin-search";
 import { commentPlugin } from "vuepress-plugin-comment2";
+import { seoPlugin } from "vuepress-plugin-seo2";
 export default defineUserConfig({
   base: "/xiaofeipeng/",
   theme: themeConfig,
@@ -79,6 +80,11 @@ export default defineUserConfig({
       categoryId: "DIC_kwDOJLYAw84CU-hL" //对应自己的分类Id
 
     }),
+
+    seoPlugin({
+      hostname: "https://cuckoocry.github.io/xiaofeipeng"
+    }),
+
   ],
 
   locales: {
