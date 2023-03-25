@@ -4,10 +4,10 @@ import { sidebarConfig } from "./sidebar";
 
 export const themeConfig = hopeTheme({
   logo: "/xiaofeipeng.png",
-  hostname: "https://xiaofeipeng.tech/",
+  hostname: "https://cuckoocry.github.io/xiaofeipeng/",
   author: {
     name: "小飞蓬",
-    //url: "https://javaguide.cn/article/",
+    url: "https://cuckoocry.github.io/xiaofeipeng/",
   },
   /*主题色选择器*/
   themeColor: {
