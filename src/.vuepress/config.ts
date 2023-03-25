@@ -4,6 +4,8 @@ import {shikiPlugin} from "@vuepress/plugin-shiki";
 import { searchPlugin } from "@vuepress/plugin-search";
 import { commentPlugin } from "vuepress-plugin-comment2";
 import { seoPlugin } from "vuepress-plugin-seo2";
+import type { CursorEffectsOptions } from 'vuepress-plugin-cursor-effects';
+
 export default defineUserConfig({
   base: "/xiaofeipeng/",
   theme: themeConfig,
@@ -84,7 +86,14 @@ export default defineUserConfig({
     seoPlugin({
       hostname: "https://cuckoocry.github.io/xiaofeipeng"
     }),
-
+    ['vuepress-plugin-cursor-effects', {
+      size: 2,
+      shape: 'circle',
+      zIndex: 999999,
+      strokeColor: 'random',
+      fillColor: 'random',
+      outerSpace: 2,
+    } as CursorEffectsOptions]
   ],
 
   locales: {
