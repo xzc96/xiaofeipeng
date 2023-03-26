@@ -79,7 +79,7 @@ AOT 可以提前编译节省启动时间，那为什么不全部使用这种编�
 - **编译型** ：[编译型语言](https://zh.wikipedia.org/wiki/%E7%B7%A8%E8%AD%AF%E8%AA%9E%E8%A8%80) 会通过[编译器](https://zh.wikipedia.org/wiki/%E7%B7%A8%E8%AD%AF%E5%99%A8)将源代码一次性翻译成可被该平台执行的机器码。一般情况下，编译语言的执行速度比较快，开发效率比较低。常见的编译性语言有 C、C++、Go、Rust 等等。
 - **解释型** ：[解释型语言](https://zh.wikipedia.org/wiki/%E7%9B%B4%E8%AD%AF%E8%AA%9E%E8%A8%80)会通过[解释器](https://zh.wikipedia.org/wiki/直譯器)一句一句的将代码解释（interpret）为机器代码后再执行。解释型语言开发效率比较快，执行速度比较慢。常见的解释性语言有 Python、JavaScript、PHP 等等。
 
-![编译型语言和解释型语言](https://oss.javaguide.cn/github/javaguide/java/basis/compiled-and-interpreted-languages.png)
+![编译型语言和解释型语言](./images/compiled-and-interpreted-languages.png)
 
 根据维基百科介绍：
 
@@ -120,7 +120,7 @@ AOT 可以提前编译节省启动时间，那为什么不全部使用这种编�
 >
 > 基于以上这些原因，OpenJDK 还是有存在的必要的！
 
-![oracle jdk release cadence](https://oss.javaguide.cn/github/javaguide/java/basis/oracle-jdk-release-cadence.jpg)
+![oracle jdk release cadence](./images/oracle-jdk-release-cadence.jpg)
 
 🌈 拓展一下：
 
@@ -157,7 +157,6 @@ Java 中的注释有三种：
 
 用的比较多的还是单行注释和文档注释，多行注释在实际开发中使用的相对较少。
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/image-20220714112336911.png)
 
 在我们编写代码的时候，如果代码量比较少，我们自己或者团队其他成员还可以很轻易地看懂代码，但是当项目结构一旦复杂起来，我们就需要用到注释了。注释并不会执行(编译器在编译代码之前会把代码中的所有注释抹掉,字节码中不保留注释)，是我们程序员写给自己看的，注释是你的代码说明书，能够帮助看代码的人快速地理清代码之间的逻辑关系。因此，在写程序的时候随手加上注释是一个非常好的习惯。
 
@@ -242,11 +241,18 @@ Java 中有三种移位运算符：
 
 - `<<` :左移运算符，向左移若干位，高位丢弃，低位补零。`x << 1`,相当于 x 乘以 2(不溢出的情况下)。
 - `>>` :带符号右移，向右移若干位，高位补符号位，低位丢弃。正数高位补 0,负数高位补 1。`x >> 1`,相当于 x 除以 2。
-- `>>>` :无符号右移，忽略符号位，空位都以 0 补齐。
+- `>>>` :无符号右移，忽略符号位，空位都以 0 补齐。如果移位的位数超过了整数的位数，那么移位操作的结果就是不确定的。
 
+```java
+int a = 10;
+int b = a >>> 2;  // 将a的二进制表示向右移动2位
+System.out.println(b); // 输出2
+
+```
 由于 `double`，`float` 在二进制中的表现比较特殊，因此不能来进行移位操作。
 
-移位操作符实际上支持的类型只有`int`和`long`，编译器在对`short`、`byte`、`char`类型进行移位前，都会将其转换为`int`类型再操作。
+移位操作符实际上支持的类型只有`int`和`long`，
+编译器在对`short`、`byte`、`char`类型进行移位前，都会将其转换为`int`类型再操作。
 
 **如果移位的位数超过数值所占有的位数会怎样？**
 
@@ -342,7 +348,7 @@ haha
 ```
 
 ### 变量
-
+> Java中的变量还可以按照作用范围分为成员变量和局部变量。
 #### 成员变量与局部变量的区别？
 
 - **语法形式** ：从语法形式上看，成员变量是属于类的，而局部变量是在代码块或方法中定义的变量或是方法的参数；成员变量可以被 `public`,`private`,`static` 等修饰符所修饰，而局部变量不能被访问控制修饰符及 `static` 所修饰；但是，成员变量和局部变量都能被 `final` 所修饰。
@@ -463,15 +469,7 @@ public class Person {
 
 发生在同一个类中（或者父类和子类之间），方法名必须相同，参数类型不同、个数不同、顺序不同，方法返回值和访问修饰符可以不同。
 
-《Java 核心技术》这本书是这样介绍重载的：
 
-> 如果多个方法(比如 `StringBuilder` 的构造方法)有相同的名字、不同的参数， 便产生了重载。
->
-> ```java
-> StringBuilder sb = new StringBuilder();
-> StringBuilder sb2 = new StringBuilder("HelloWorld");
-> ```
->
 > 编译器必须挑选出具体执行哪个方法，它通过用各个方法给出的参数类型与特定方法调用所使用的值类型进行匹配来挑选出相应的方法。 如果编译器找不到匹配的参数， 就会产生编译时错误， 因为根本不存在匹配， 或者没有一个比其他的更好(这个过程被称为重载解析(overloading resolution))。
 >
 > Java 允许重载任何方法， 而不只是构造器方法。
@@ -865,7 +863,7 @@ System.out.println(y); /* 0.1 */
 System.out.println(Objects.equals(x, y)); /* true */
 ```
 
-关于 `BigDecimal` 的详细介绍，可以看看我写的这篇文章：[BigDecimal 详解](src/java/basis/bigdecimal.md)。
+关于 `BigDecimal` 的详细介绍，可以看看我写的这篇文章：[BigDecimal 详解](./bigdecimal.md)。
 
 ### 超过 long 整型的数据应该如何表示？
 
@@ -882,6 +880,18 @@ System.out.println(l + 1 == Long.MIN_VALUE); // true
 `BigInteger` 内部使用 `int[]` 数组来存储任意大小的整形数据。
 
 相对于常规整数类型的运算来说，`BigInteger` 运算的效率会相对较低。
+
+### a = a + b 与 a += b 的区别
++= 隐式的将加操作的结果类型强制转换为持有结果的类型。如果两个整型相加，如 byte、short 或者 int，首先会将它们提升到 int 类型，然后在执行加法操作。byte a = 127;
+```java
+byte b = 127;
+b = a + b; // error : cannot convert from int to byte
+b += a; // ok
+```
+(因为 a+b 操作会将 a、b 提升为 int 类型，所以将 int 类型赋值给 byte 就会编译出错)# 3*0.1 == 0.3 将会返回什么? true 还是 false?
+
+
+
 
 ## 参考
 

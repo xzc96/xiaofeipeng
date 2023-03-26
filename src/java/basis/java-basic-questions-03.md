@@ -17,7 +17,7 @@ head:
 
 **Java 异常类层次结构图概览** ：
 
-![Java 异常类层次结构图](https://oss.javaguide.cn/github/javaguide/java/basis/types-of-exceptions-in-java.png)
+![Java 异常类层次结构图](./images/types-of-exceptions-in-java.png)
 
 ### Exception 和 Error 有什么区别？
 
@@ -32,9 +32,9 @@ head:
 
 比如下面这段 IO 操作的代码：
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/checked-exception.png)
+![](./images/checked-exception.png)
 
-除了`RuntimeException`及其子类以外，其他的`Exception`类及其子类都属于受检查异常 。常见的受检查异常有： IO 相关的异常、`ClassNotFoundException` 、`SQLException`...。
+除了`RuntimeException`及其子类以外，其他的`Exception`类及其子类都属于受检查异常 。常见的受检查异常有： IO 相关的异常、`ClassNotFoundException` 、`SQLException`...。这种异常的特点是Java编译器会检查它，也就是说，当程序中可能出现这类异常，要么用try-catch语句捕获它，要么用throws子句声明抛出它，否则编译不会通过。
 
 **Unchecked Exception** 即 **不受检查异常** ，Java 代码在编译过程中 ，我们即使不处理不受检查异常也可以正常通过编译。
 
@@ -50,7 +50,6 @@ head:
 - `UnsupportedOperationException`(不支持的操作错误比如重复创建同一用户)
 - ......
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/unchecked-exception.png)
 
 ### Throwable 类常用方法有哪些？
 
@@ -317,6 +316,23 @@ printArray( stringArray  );
 
 > 注意: `public static < E > void printArray( E[] inputArray )` 一般被称为静态泛型方法;在 java 中泛型只是一个占位符，必须在传递类型后才能使用。类在实例化时才能真正的传递类型参数，由于静态方法的加载先于类的实例化，也就是说类中的泛型还没有传递真正的类型参数，静态的方法的加载就已经完成了，所以静态泛型方法是没有办法使用类上声明的泛型的。只能使用自己声明的 `<E>`
 
+> 定义泛型方法语法格式：  
+
+![java-basic-generic-4.png](./images/java-basic-generic-4.png)
+> 调用泛型方法语法格式:   
+
+![java-basic-generic-5.png](./images/java-basic-generic-5.png)  
+
+说明一下，定义泛型方法时，必须在返回值前边加一个`<T>`，来声明这是一个泛型方法，持有一个泛型T，然后才可以用泛型T作为方法的返回值。  
+`Class<T>`的作用就是指明泛型的具体类型，而`Class<T>`类型的变量c，可以用来创建泛型类的对象。   
+为什么要用变量c来创建对象呢？既然是泛型方法，就代表着我们不知道具体的类型是什么，也不知道构造方法如何，因此没有办法去new一个对象，但可以利用变量c的newInstance方法去创建对象，也就是利用反射创建对象。   
+泛型方法要求的参数是`Class<T>`类型，而`Class.forName()`方法的返回值也是`Class<T>`，因此可以用`Class.forName()`作为参数。其中，`forName()`方法中的参数是何种类型，返回的`Class<T>`就是何种类型。    
+在本例中，`forName()`方法中传入的是User类的完整路径，因此返回的是`Class<User>`类型的对象，因此调用泛型方法时，变量c的类型就是`Class<User>`，因此泛型方法中的泛型T就被指明为User，因此变量obj的类型为User。当然，泛型方法不是仅仅可以有一个参数`Class<T>`，可以根据需要添加其他参数。
+
+**为什么要使用泛型方法呢？**   
+因为泛型类要在实例化的时候就指明类型，如果想换一种类型，不得不重新new一次，可能不够灵活；而泛型方法可以在调用的时候指明类型，更加灵活。
+
+
 ### 项目中哪里用到了泛型？
 
 - 自定义接口通用返回结果 `CommonResult<T>` 通过参数 `T` 可根据具体的返回类型动态指定结果的数据类型
@@ -326,11 +342,14 @@ printArray( stringArray  );
 
 ## 反射
 
-关于反射的详细解读，请看这篇文章 [Java 反射机制详解](src/java/basis/reflection.md) 。
+关于反射的详细解读，请看这篇文章 [Java 反射机制详解](./reflection.md) 。
 
 ### 何谓反射？
 
-如果说大家研究过框架的底层原理或者咱们自己写过框架的话，一定对反射这个概念不陌生。反射之所以被称为框架的灵魂，主要是因为它赋予了我们在运行时分析类以及执行类中方法的能力。通过反射你可以获取任意一个类的所有属性和方法，你还可以调用这些方法和属性。
+**JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；
+对于任意一个对象，都能够调用它的任意一个方法和属性；
+这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。**    
+反射之所以被称为框架的灵魂，主要是因为它赋予了我们在运行时分析类以及执行类中方法的能力。
 
 ### 反射的优缺点？
 
@@ -406,7 +425,7 @@ JDK 提供了很多内置的注解（比如 `@Override` 、`@Deprecated`），�
 
 ## SPI
 
-关于 SPI 的详细解读，请看这篇文章 [Java SPI 机制详解](src/java/basis/spi.md) 。
+关于 SPI 的详细解读，请看这篇文章 [Java SPI 机制详解](./spi.md) 。
 
 ### 何谓 SPI?
 
@@ -414,9 +433,12 @@ SPI 即 Service Provider Interface ，字面意思就是：“服务提供者的
 
 SPI 将服务接口和具体的服务实现分离开来，将服务调用方和服务实现者解耦，能够提升程序的扩展性、可维护性。修改或者替换服务实现并不需要修改调用方。
 
-很多框架都使用了 Java 的 SPI 机制，比如：Spring 框架、数据库加载驱动、日志接口、以及 Dubbo 的扩展实现等等。
+SPI（Service Provider Interface），是JDK内置的一种 服务提供发现机制，可以用来启用框架扩展和替换组件，主要是被框架的开发人员使用，比如java.sql.Driver接口，其他不同厂商可以针对同一接口做出不同的实现，MySQL和PostgreSQL都有不同的实现提供给用户，而Java的SPI机制可以为某个接口寻找服务实现。
+Java中SPI机制主要思想是将装配的控制权移到程序之外，在模块化设计中这个机制尤其重要，其核心思想就是**解耦**。  
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/spi/22e1830e0b0e4115a882751f6c417857tplv-k3u1fbpfcp-zoom-1.jpeg)
+很多框架都使用了 Java 的 SPI 机制，比如：Spring 框架、数据库加载驱动、日志接口、以及 Dubbo 的扩展实现等等。  
+SPI整体机制图如下：  
+![java-advanced-spi-8.jpg](./images/java-advanced-spi-8.jpg)
 
 ### SPI 和 API 有什么区别？
 
@@ -424,7 +446,7 @@ SPI 将服务接口和具体的服务实现分离开来，将服务调用方和�
 
 说到 SPI 就不得不说一下 API 了，从广义上来说它们都属于接口，而且很容易混淆。下面先用一张图说明一下：
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/spi/1ebd1df862c34880bc26b9d494535b3dtplv-k3u1fbpfcp-watermark.png)
+![](./images/1ebd1df862c34880bc26b9d494535b3dtplv-k3u1fbpfcp-watermark.png)
 
 一般模块之间都是通过接口进行通讯，那我们在服务调用方和服务实现方（也称服务提供者）之间引入一个“接口”。
 
@@ -443,7 +465,7 @@ SPI 将服务接口和具体的服务实现分离开来，将服务调用方和�
 
 ## 序列化和反序列化
 
-关于序列化和反序列化的详细解读，请看这篇文章 [Java 序列化详解](src/java/basis/serialization.md) ，里面涉及到的知识点和面试题更全面。
+关于序列化和反序列化的详细解读，请看这篇文章 [Java 序列化详解](./serialization.md) ，里面涉及到的知识点和面试题更全面。
 
 ### 什么是序列化?什么是反序列化?
 
@@ -469,9 +491,8 @@ SPI 将服务接口和具体的服务实现分离开来，将服务调用方和�
 
 综上：**序列化的主要目的是通过网络传输对象或者说是将对象存储到文件系统、数据库、内存中。**
 
-![](https://oss.javaguide.cn/github/javaguide/a478c74d-2c48-40ae-9374-87aacf05188c.png)
+![](./images/a478c74d-2c48-40ae-9374-87aacf05188c.png)
 
-<p style="text-align:right;font-size:13px;color:gray">https://www.corejavaguru.com/java/serialization/interview-questions-1</p>
 
 **序列化协议对应于 TCP/IP 4 层模型的哪一层？**
 
@@ -482,7 +503,7 @@ SPI 将服务接口和具体的服务实现分离开来，将服务调用方和�
 3. 网络层
 4. 网络接口层
 
-![TCP/IP 四层模型](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-ip-4-model.png)
+![TCP/IP 四层模型](./images/tcp-ip-4-model.png)
 
 如上图所示，OSI 七层协议模型中，表示层做的事情主要就是对应用层的用户数据进行处理转换为二进制流。反过来的话，就是将二进制流转换成应用层的用户数据。这不就对应的是序列化和反序列化么？
 
@@ -518,9 +539,9 @@ JDK 自带的序列化方式一般不会用 ，因为序列化效率低并且存
 
 关于I/O的详细解读，请看下面这几篇文章，里面涉及到的知识点和面试题更全面。
 
-- [Java IO 基础知识总结](src/java/io/io-basis.md)
-- [Java IO 设计模式总结](src/java/io/io-design-patterns.md)
-- [Java IO 模型详解](src/java/io/io-model.md)
+- [Java IO 基础知识总结](../io/io-basis.md)
+- [Java IO 设计模式总结](..//io/io-design-patterns.md)
+- [Java IO 模型详解](..//io/io-model.md)
 
 ### Java IO 流了解吗？
 
@@ -541,12 +562,12 @@ Java IO 流的 40 多个类都是从如下 4 个抽象类基类中派生出来�
 - 如果我们不知道编码类型的话，使用字节流的过程中很容易出现乱码问题。
 
 ### Java IO 中的设计模式有哪些？
-
-参考答案：[Java IO 设计模式总结](src/java/io/io-design-patterns.md)
+装饰者模式： 所谓装饰，就是把这个装饰者套在被装饰者之上，从而动态扩展被装饰者的功能。
+参考答案：[Java IO 设计模式总结](../io/io-design-patterns.md)
 
 ### BIO、NIO 和 AIO 的区别？
 
-参考答案：[Java IO 模型详解](src/java/io/io-model.md)
+参考答案：[Java IO 模型详解](../io/io-model.md)
 
 ## 语法糖
 
@@ -569,7 +590,7 @@ for (String s : strs) {
 
 Java 中最常用的语法糖主要有泛型、自动拆装箱、变长参数、枚举、内部类、增强 for 循环、try-with-resources 语法、lambda 表达式等。
 
-关于这些语法糖的详细解读，请看这篇文章 [Java 语法糖详解](src/java/basis/syntactic-sugar.md) 。
+关于这些语法糖的详细解读，请看这篇文章 [Java 语法糖详解](./syntactic-sugar.md) 。
 
 
 
