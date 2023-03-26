@@ -25,11 +25,11 @@ Java 虚拟机在执行 Java 程序的过程中会把它管理的内存划分成
 
 **JDK 1.8 之前** ：
 
-![Java 运行时数据区域（JDK1.8 之前）](https://oss.javaguide.cn/github/javaguide/java/jvm/java-runtime-data-areas-jdk1.7.png)
+![Java 运行时数据区域（JDK1.8 之前）](./pictures/java-runtime-data-areas-jdk1.7.png)
 
 **JDK 1.8 之后** ：
 
-![Java 运行时数据区域（JDK1.8 之后）](https://oss.javaguide.cn/github/javaguide/java/jvm/java-runtime-data-areas-jdk1.8.png)
+![Java 运行时数据区域（JDK1.8 之后）](./pictures/java-runtime-data-areas-jdk1.8.png)
 
 **线程私有的：**
 
@@ -68,7 +68,7 @@ Java 虚拟机规范对于运行时数据区域的规定是相当宽松的。以
 
 栈由一个个栈帧组成，而每个栈帧中都拥有：局部变量表、操作数栈、动态链接、方法返回地址。和数据结构上的栈类似，两者都是先进后出的数据结构，只支持出栈和入栈两种操作。
 
-![Java 虚拟机栈](https://oss.javaguide.cn/github/javaguide/java/jvm/stack-area.png)
+![Java 虚拟机栈](./pictures/stack-area.png)
 
 **局部变量表** 主要存放了编译期可知的各种数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference 类型，它不同于对象本身，可能是一个指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置）。
 

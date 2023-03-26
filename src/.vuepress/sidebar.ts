@@ -432,7 +432,7 @@ export const sidebarConfig = sidebar({
           text: "理论&算法&协议",
           icon: "suanfaku",
           prefix: "theorem&algorithm&protocol/",
-          children: ["cap&base-theorem", "paxos-algorithm", "raft-algorithm"],
+          children: ["cap&base-theorem.md", "paxos-algorithm.md", "raft-algorithm.md"],
         },
         "api-gateway",
         "distributed-id",
