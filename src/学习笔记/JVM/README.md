@@ -9,11 +9,14 @@ category:
 
 ## 介绍
 
-> 来源Bilibili尚硅谷宋红康老师JVM教程：[硅谷2020最新版宋红康JVM教程](https://www.bilibili.com/video/BV1PJ411n7xZ)
-> 笔记补充：https://gitee.com/vectorx/NOTE_JVM/tree/main
-> 最细致的JVM讲解（更多可参考书籍）
-> 全面笔记：https://www.yuque.com/u21195183/jvm
-> 2、3部分笔记尚未完全
+::: tip
+该文章包含JVM基础入门篇全部内容以及宋红康老师JVM教程全套笔记。
+来源Bilibili尚硅谷宋红康老师JVM教程：[硅谷2020最新版宋红康JVM教程](https://www.bilibili.com/video/BV1PJ411n7xZ)  
+笔记补充：https://gitee.com/vectorx/NOTE_JVM/tree/main , https://www.yuque.com/u21195183/jvm  
+最细致的JVM讲解（更多可参考书籍）
+
+:::
+
 
 ## 目录
 
