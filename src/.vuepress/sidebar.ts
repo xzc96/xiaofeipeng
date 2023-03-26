@@ -4,7 +4,7 @@ import { aboutTheAuthor } from "./sidebar/about-the-author";
 import { books } from "./sidebar/books";
 import { ai } from "./sidebar/ai";
 import { openSourceProject } from "./sidebar/open-source-project";
-import { shangguiguNote } from "./sidebar/shangguiguNote";
+import { learnNote } from "./sidebar/learnNote";
 import {essay} from "./sidebar/essay";
 
 // @ts-ignore
@@ -13,7 +13,7 @@ export const sidebarConfig = sidebar({
   "/open-source-project/": openSourceProject,
   "/books/": books,
   "/posts/": essay,
-  "/尚硅谷学习笔记/": shangguiguNote,
+  "/学习笔记/": learnNote,
   "/ai/": ai,
   "/about-the-author/": aboutTheAuthor,
   "/high-quality-technical-articles/": highQualityTechnicalArticles,

@@ -1,4 +1,4 @@
-export const shangguiguNote = [
+export const learnNote = [
   //  学习笔记目录
   {
     text: "大厂面试第二季",
@@ -142,6 +142,22 @@ export const shangguiguNote = [
           "补充：浅堆深堆与内存泄露/"
         ]
       },
+    ],
+
+  },
+  {
+    text: "计算机网络",
+    icon: "network",
+    prefix: "计算机网络/",
+    collapsible: true,
+    children: [
+      "",
+      "1_三次握手和四次挥手/",
+      "2_https和http/",
+      "3_TCP中的拥塞控制和流量控制/",
+      "4_物理层/",
+      "5_数据链路层/",
+      "http中的状态码/",
     ],
 
   },
