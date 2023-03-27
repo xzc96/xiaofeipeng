@@ -22,7 +22,7 @@ icon:
 
 > 完美世界 https://civitai.com/models/8281/perfect-world
 
-![image-20230312092629980](./各个模块和Lora/images/image-20230312092629980.png)
+![image-20230312092629980](./images/image-20230312092629980.png)
 
 
 
