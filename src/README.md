@@ -99,7 +99,7 @@ projects:
   - icon: /mybatisplus.png
     name: mybatis-plus
     desc: 为简化开发而生
-    link: https://mybatis.plus/
+    link: https://baomidou.com/
 
   - icon: link
     name: 炼码

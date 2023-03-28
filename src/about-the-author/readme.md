@@ -13,18 +13,23 @@ npm i -D vuepress-theme-hope
 ```
 
 ## 博客内容
-来源：
+
+### 来源：
+
 1、[JavaGuide](https://javaguide.cn/books/) ：「Java 学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。   
 2、[陌溪的学习笔记](http://note.moguit.cn/)  ： 看视频学习的各种知识笔记，也包括面试知识    
 3、自己学习摘抄并优化。   
 4、其他一些优秀的博客文章。
 
-## 一些学习的网站
-除了首页的一些博客分享，一些基础学习的网站也挺不错，比如菜鸟教程。[Java教程](https://www.runoob.com/java/java-tutorial.html)  
-一篇文章：https://www.freecodecamp.org/chinese/news/learn-to-code-book/
-来自：https://www.runoob.com/w3cnote/code-website-recommend.html
+### 一些学习的网站
 
-### 国外的：推荐
+> 来自：https://www.runoob.com/w3cnote/code-website-recommend.html
+
+除了首页的一些博客分享，一些基础学习的网站也挺不错.  
+[如何在 2023 年学习编程并获得开发者工作 -完整指南](https://www.freecodecamp.org/chinese/news/learn-to-code-book/)  
+
+#### 国外的：推荐
+
 - https://www.google.com: 基本上所有的问题都可以在这上面找到答案，但是访问需要点技巧。
 - https://chat.openai.com/chat: 怎么能忘了我们的AI助手呢？他可能很不错的，当然得看你的问问题技巧了。
 - http://stackoverflow.com 有干货的地方。代码遇到相关问题经常被导到这个网站去，回答质量很高，排版简洁清晰。我现在遇到问题经常会搜索词后面加一个词"stackoverflow"，敲回车的同时常常要骂一下这个创始人起个名字咋那么长.....
@@ -36,7 +41,7 @@ npm i -D vuepress-theme-hope
 - https://www.reddit.com/: 包含有趣的编程挑战题，即使不会写，也可以查看他人的解决方法。
 - https://ideone.com/：在线编译器，可运行，可查看代码示例。
 - http://it-ebooks.info/：大型电子图书馆，可即时免费下载书籍。
-### 国内的：
+#### 国内的：
 - https://www.runoob.com 自己的网站，内容丰富，新手可以作为入门指引，高手可作为手册使用，支持移动版，地址为：- https://m.runoob.com
 - http://csdn.net 国内的程序员入门级网站，内容很多很杂，包括论坛、资源下载、博客、各种资讯等等。经常只在这个网站找到稳定的资源下载。攒积分要从娃娃抓起啊，不要到了要下载的时候才发现分不够。。。
 - http://oschina.net 国内最好的开源社区，在这里讨论问题的氛围挺不错的。创始人红薯也很热心，更新很即时，经常看到新出的开源项目在这里有翻译介绍。
