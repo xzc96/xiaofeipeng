@@ -22,7 +22,7 @@ head:
 
 如下图所示，在 Windows 中通过查看任务管理器的方式，我们就可以清楚看到 Windows 当前运行的进程（`.exe` 文件的运行）。
 
-![进程示例图片-Windows](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/进程示例图片-Windows.png)
+![进程示例图片-Windows](./images/进程示例图片-Windows.png)
 
 ### 何为线程?
 
@@ -140,8 +140,7 @@ Java 线程在运行的生命周期中的指定时刻只可能处于下面 6 种
 
 Java 线程状态变迁图(图源：[挑错 |《Java 并发编程的艺术》中关于线程状态的三处错误](https://mp.weixin.qq.com/s/UOrXql_LhOD8dhTq_EPI0w))：
 
-![Java 线程状态变迁图](https://oss.javaguide.cn/github/javaguide/java/concurrent/640.png)
-
+![Java 线程状态变迁图](./images/640.png)
 由上图可以看出：线程创建之后它将处于 **NEW（新建）** 状态，调用 `start()` 方法后开始运行，线程这时候处于 **READY（可运行）** 状态。可运行状态的线程获得了 CPU 时间片（timeslice）后就处于 **RUNNING（运行）** 状态。
 
 > 在操作系统层面，线程有 READY 和 RUNNING 状态；而在 JVM 层面，只能看到 RUNNABLE 状态（图源：[HowToDoInJava](https://howtodoinJava.com/ "HowToDoInJava")：[Java Thread Life Cycle and Thread States](https://howtodoinJava.com/Java/multi-threading/Java-thread-life-cycle-and-thread-states/ "Java Thread Life Cycle and Thread States")），所以 Java 系统一般将这两个状态统称为 **RUNNABLE（运行中）** 状态 。
