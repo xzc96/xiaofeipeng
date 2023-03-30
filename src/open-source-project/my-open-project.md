@@ -1,10 +1,11 @@
 ---
-title: 我的开元醒目
+title: 我的开源项目
 category: 
  - 开源项目
 icon: 
  - ruoyi
 ---
+
 ## RuoYi-Vue-Jiang
 
 ### 1、后端打包，将jar放进
@@ -29,25 +30,45 @@ nohup java -jar ruoyi-admin.jar >log_ruoyi.txt &
 ps aux | grep java
 ```
 
+### 1、服务器
+查看运行情况：
+```shell
+ps aux | grep java
+```
+启动：
+```shell
+## 可用脚本
 
-## RuoYi-App-Jiang
+## 也可自己手动启动
+nohup java -jar officer-admin.jar >log_officer.txt &
 
+```
+
+脚本可用ChatGPT自动生成。
+
+
+### 2、相关依赖
+
+#### minion
+
+启动：
+su nohup /opt/minio server  /opt/minio/data > /opt/minio/data/minio.log 2>&1 &
+http://8.129.222.111:9000/
+
+#### redis  mysql 
+都在docker
+
+#### Nginx
+/home/nginx
+
+
+## RuoYi-Vue-APP
+相关文档：
 > http://doc.ruoyi.vip/ruoyi-app/
 > https://uniapp.dcloud.net.cn/
 > https://gitee.com/cuckoocry/RuoYi-App
 > 
 
-### 后端
-
-ps aux | grep java
-
-nohup java -jar officer-admin.jar >log_officer.txt &
-
-### minion
-
-启动：
-su nohup /opt/minio server  /opt/minio/data > /opt/minio/data/minio.log 2>&1 &
-http://8.129.222.111:9000/
 
 ### 小程序
 
