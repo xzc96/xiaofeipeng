@@ -20,11 +20,12 @@ Java 集合， 也叫作容器，主要是由两大接口派生而来：一个�
 
 Java 集合框架如下图所示：
 
-![](https://oss.javaguide.cn/github/javaguide/java/collection/java-collection-hierarchy.png)
-
+![](./images/java-collection-hierarchy.png)
 
 注：图中只列举了主要的继承派生关系，并没有列举所有关系。比方省略了`AbstractList`, `NavigableSet`等抽象类以及其他的一些辅助类，如想深入了解，可自行查看源码。
+![2243690-9cd9c896e0d512ed.gif](./images/2243690-9cd9c896e0d512ed.gif)
 
+> == 忘记箭头是啥意思了？先回忆一下吧，https://design-patterns.readthedocs.io/zh_CN/latest/read_uml.html   
 ### 说说 List, Set, Queue, Map 四者的区别？
 
 - `List`(对付顺序的好帮手): 存储的元素是有序的、可重复的。
@@ -57,7 +58,7 @@ Java 集合框架如下图所示：
 
 #### Map
 
-- `HashMap`： JDK1.8 之前 `HashMap` 由数组+链表组成的，数组是 `HashMap` 的主体，链表则是主要为了解决哈希冲突而存在的（“拉链法”解决冲突）。JDK1.8 以后在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为 8）（将链表转换成红黑树前会判断，如果当前数组的长度小于 64，那么会选择先进行数组扩容，而不是转换为红黑树）时，将链表转化为红黑树，以减少搜索时间
+- `HashMap`： JDK1.8 之前 `HashMap` 由数组+链表组成的，数组是 `HashMap` 的主体，链表则是主要为了解决哈希冲突而存在的（“拉链法”解决冲突）。JDK1.8 以后在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为 8）（将链表转换成红黑树前会判断，如果当前数组的长度小于 64，那么会选择先进行数组扩容，而不是转换为红黑树）时，将链表转化为红黑树，以减少搜索时间。[《HashMap 源码详细分析（JDK1.8）》](https://www.imooc.com/article/30668)
 - `LinkedHashMap`： `LinkedHashMap` 继承自 `HashMap`，所以它的底层仍然是基于拉链式散列结构即由数组和链表或红黑树组成。另外，`LinkedHashMap` 在上面结构的基础上，增加了一条双向链表，使得上面的结构可以保持键值对的插入顺序。同时通过对链表进行相应的操作，实现了访问顺序相关逻辑。详细可以查看：[《LinkedHashMap 源码详细分析（JDK1.8）》](https://www.imooc.com/article/22931)
 - `Hashtable`： 数组+链表组成的，数组是 `Hashtable` 的主体，链表则是主要为了解决哈希冲突而存在的
 - `TreeMap`： 红黑树（自平衡的排序二叉树）
@@ -103,11 +104,11 @@ Java 集合框架如下图所示：
 
 **双向链表：** 包含两个指针，一个 prev 指向前一个节点，一个 next 指向后一个节点。
 
-![双向链表](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/双向链表.png)
+![双向链表](./images/双向链表.png)
 
 **双向循环链表：** 最后一个节点的 next 指向 head，而 head 的 prev 指向最后一个节点，构成一个环。
 
-![双向循环链表](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/双向循环链表.png)
+![双向循环链表](./images/双向循环链表.png)
 
 #### 补充内容:RandomAccess 接口
 
@@ -134,7 +135,7 @@ public interface RandomAccess {
 
 ### 说一说 ArrayList 的扩容机制吧
 
-详见笔主的这篇文章: [ArrayList 扩容机制分析](https://javaguide.cn/java/collection/arraylist-source-code.html#_3-1-%E5%85%88%E4%BB%8E-arraylist-%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%AF%B4%E8%B5%B7)
+详见笔主的这篇文章: [ArrayList 扩容机制分析](./arraylist-source-code.md)
 
 ## Collection 子接口之 Set
 

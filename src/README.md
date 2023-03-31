@@ -79,11 +79,32 @@ projects:
     desc: 阿里云开发者学堂
     link: https://developer.aliyun.com/learning?spm=a2c6h.12873639.J_5404914170.19.4780461bXHZsH9
 
+  - icon: /cainiao.png
+    name: 菜鸟教程
+    desc: 菜鸟教程，有各种教程。（我最青睐的设计模式）
+    link: https://www.runoob.com
+
+
   - icon: link
     name: stackoverflow
     desc: 寻找问题答案的好帮手
     link: https://stackoverflow.com/
 
+
+  - icon: /spring.png
+    name: spring-boot
+    desc: Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
+    link: https://spring.io/projects/spring-boot
+
+  - icon: /mybatisplus.png
+    name: mybatis-plus
+    desc: 为简化开发而生
+    link: https://baomidou.com/
+
+  - icon: link
+    name: 炼码
+    desc: 炼码
+    link: https://www.lintcode.com/
 
 
 footer: 子在川上曰：“逝者如斯夫，不舍昼夜。”

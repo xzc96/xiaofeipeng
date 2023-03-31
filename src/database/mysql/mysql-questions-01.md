@@ -301,6 +301,8 @@ select sql_no_cache count(*) from usr;
 
 ![事务示意图](https://oss.javaguide.cn/github/javaguide/mysql/%E4%BA%8B%E5%8A%A1%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
+
+
 ### 何谓数据库事务？
 
 大多数情况下，我们在谈论事务的时候，如果没有特指**分布式事务**，往往指的就是**数据库事务**。
@@ -347,6 +349,23 @@ COMMIT;
 《Designing Data-Intensive Application（数据密集型应用系统设计）》这本书强推一波，值得读很多遍！豆瓣有接近 90% 的人看了这本书之后给了五星好评。另外，中文翻译版本已经在 Github 开源，地址：[https://github.com/Vonng/ddia](https://github.com/Vonng/ddia) 。
 
 ![](https://oss.javaguide.cn/github/javaguide/books/ddia.png)
+
+### MySQL如何去实现事物的?
+具体来说，MySQL采用了以下方法实现事务：
+
+1. 原子性（Atomicity）：在事务中的操作要么全部执行，要么全部不执行，不会只执行其中的一部分。这是通过使用undo日志和redo日志来实现的。如果一个操作失败，MySQL会使用undo日志来撤销操作，保证事务的原子性。
+
+2. 一致性（Consistency）：在事务开始和结束时，数据库必须处于一致状态。也就是说，事务操作前后，数据的完整性、约束和规则都必须保持一致。MySQL通过使用触发器和约束来保证数据的一致性。
+
+3. 隔离性（Isolation）：MySQL使用了四种隔离级别，分别是Read Uncommitted、Read Committed、Repeatable Read、Serializable。不同的隔离级别提供不同的事务隔离程度，以避免数据的脏读、不可重复读和幻读等问题。
+
+4. 持久性（Durability）：在事务完成后，数据的修改必须能够被持久化到磁盘中，以避免数据的丢失。MySQL使用了redo日志和binlog来保证数据的持久性。
+
+综上所述，MySQL通过使用ACID属性和日志记录等技术，实现了事务的功能。
+
+
+
+
 
 ### 并发事务带来了哪些问题?
 
