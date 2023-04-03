@@ -65,6 +65,7 @@ npm i -D vuepress-theme-hope
 >TODO 数据库 中间件 算法 spring  方法论
 
 ## 一些推荐
+将博客文章打开控制台，找到'article_content',’复制到outerHTML‘.
 >markdown转换工具：https://tool.lu/markdown/#
 
 ## 电子书

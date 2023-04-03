@@ -72,13 +72,13 @@ Java 虚拟机规范对于运行时数据区域的规定是相当宽松的。以
 
 **局部变量表** 主要存放了编译期可知的各种数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference 类型，它不同于对象本身，可能是一个指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置）。
 
-![局部变量表](https://oss.javaguide.cn/github/javaguide/java/jvm/local-variables-table.png)
+![局部变量表](./pictures/local-variables-table.png)
 
 **操作数栈** 主要作为方法调用的中转站使用，用于存放方法执行过程中产生的中间计算结果。另外，计算过程中产生的临时变量也会放在操作数栈中。
 
 **动态链接** 主要服务一个方法需要调用其他方法的场景。Class 文件的常量池里保存有大量的符号引用比如方法引用的符号引用。当一个方法要调用其他方法，需要将常量池中指向方法的符号引用转化为其在内存地址中的直接引用。动态链接的作用就是为了将符号引用转换为调用方法的直接引用，这个过程也被称为 **动态连接** 。
 
-![](https://oss.javaguide.cn/github/javaguide/jvmimage-20220331175738692.png)
+![](./pictures/jvmimage-20220331175738692.png)
 
 栈空间虽然不是无限的，但一般正常调用的情况下是不会出现问题的。不过，如果函数调用陷入无限循环的话，就会导致栈中被压入太多栈帧而占用太多空间，导致栈空间过深。那么当线程请求栈的深度超过当前 Java 虚拟机栈的最大深度的时候，就抛出 `StackOverFlowError` 错误。
 
@@ -159,13 +159,13 @@ Java 堆是垃圾收集器管理的主要区域，因此也被称作 **GC 堆（
 
 **方法区和永久代以及元空间是什么关系呢？** 方法区和永久代以及元空间的关系很像 Java 中接口和类的关系，类实现了接口，这里的类就可以看作是永久代和元空间，接口可以看作是方法区，也就是说永久代以及元空间是 HotSpot 虚拟机对虚拟机规范中方法区的两种实现方式。并且，永久代是 JDK 1.8 之前的方法区实现，JDK 1.8 及以后方法区的实现变成了元空间。
 
-![HotSpot 虚拟机方法区的两种实现](https://oss.javaguide.cn/github/javaguide/java/jvm/method-area-implementation.png)
+![HotSpot 虚拟机方法区的两种实现](./pictures/method-area-implementation.png)
 
 **为什么要将永久代 (PermGen) 替换为元空间 (MetaSpace) 呢?**
 
 下图来自《深入理解 Java 虚拟机》第 3 版 2.2.5
 
-![](https://oss.javaguide.cn/github/javaguide/java/jvm/20210425134508117.png)
+![](./pictures/20210425134508117.png)
 
 1、整个永久代有一个 JVM 本身设置的固定大小上限，无法进行调整，而元空间使用的是本地内存，受本机可用内存的限制，虽然元空间仍旧可能溢出，但是比原来出现的几率会更小。
 
