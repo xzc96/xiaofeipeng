@@ -77,7 +77,7 @@ public ResponseEntity<byte[]> getDataAsWord() throws IOException {
 在此示例中，我们从数据服务层获取数据，使用XWPFDocument创建一个新的Word文档，然后使用createTable创建一个新的表格，
 并为其指定列数和列宽。接下来，我们将表头添加到第一行，将查询结果添加到表格的其余行中。
 最后，将Word文档保存为字节数组，并使用ResponseEntity将其作为响应发送回浏览器。
-以上只是一个简单的生成Word文档的方法。更多细节参考：[更多](toWordMore.md)。来源：https://blog.csdn.net/weixin_43549578/article/details/128039264
+以上只是一个简单的生成Word文档的方法。更多细节参考：[更多](https://blog.csdn.net/weixin_43549578/article/details/128039264)。
 
 ##  2、根据Word文档模版填充数据。
 
