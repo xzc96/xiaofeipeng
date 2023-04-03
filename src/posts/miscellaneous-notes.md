@@ -226,3 +226,8 @@ public class Client {
 
 总结：替换书签用这个插件就很简单了。只需要拿数据和对应的模板，替换即可。
 > 实际用例：
+
+
+##  推荐：Wetab 新标签页(已整合ChatGPT)
+
+![img.png](./images/chrome-webtab.png)
