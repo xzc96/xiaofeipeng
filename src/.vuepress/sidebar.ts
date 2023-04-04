@@ -3,6 +3,7 @@ import { highQualityTechnicalArticles } from "./sidebar/high-quality-technical-a
 import { aboutTheAuthor } from "./sidebar/about-the-author";
 import { books } from "./sidebar/books";
 import { ai } from "./sidebar/ai";
+import { learningPath } from "./sidebar/learning-path";
 import { openSourceProject } from "./sidebar/open-source-project";
 import { learnNote } from "./sidebar/learnNote";
 import {essay} from "./sidebar/essay";
@@ -14,6 +15,7 @@ export const sidebarConfig = sidebar({
   "/books/": books,
   "/posts/": essay,
   "/学习笔记/": learnNote,
+  "/learning-path/": learningPath,
   "/ai/": ai,
   "/about-the-author/": aboutTheAuthor,
   "/high-quality-technical-articles/": highQualityTechnicalArticles,
