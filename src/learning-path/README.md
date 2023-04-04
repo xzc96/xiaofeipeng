@@ -19,4 +19,69 @@ category:
 
 
 ## 为什么写
-> 
+> 为了更好更快的写代码，从写代码的角度循序渐进的提升，提升你本职工作（通常是堆码）能力的同时让你有更多时间来思考体系化的学习
+
+
+## 如何看这个系列
+循序渐进的，前后引入的Demo和项目有衔接，讲其中的演化，讲其中重要的点；  
+用教练员的思维，给方向性的指引，让你提升认知效率；  
+从青铜到王者的逐步提升；  
+都是基于开源的实战项目着手，让你直接学以致用
+
+## 路线概览
+
+### 入门 - 青铜阶段
+
+- 基础知识
+  - Java
+  - SpringMVC
+  - SpringBoot
+  - Vue
+  - IDEA
+    
+
+
+- CURD - 后端
+  - SpringBoot - 无数据库的CRUD + ThyMeleaf页面
+  - SpringBoot - MySQL的CRUD - MyBatis + ThyMeleaf页面
+  - SpringBoot - MySQL的CRUD - JPA + ThyMeleaf页面
+    
+
+
+- CURD - 前后端分离
+    - SpringBoot 
+
+
+- 核心模块
+    - AAA基础 - SpringSecurity和Shiro
+    - RBAC基础
+    - 登录 - 后端模块式登录
+    - 登录 - 前后端分离式模块登录
+
+
+### 进阶 - 白银阶段
+
+- web项目的技术栈演进
+
+- 早期的Web项目入门
+
+  - 配置化，SpringMVC, MyBatis, Freemarker
+- 早期的Web完整项目
+
+- 单机后端应用模块演化
+
+- Ruoyi-fast
+
+> 以上基本没用过，暂时略过
+
+- 单机后端模块化
+
+  - Ruoyi
+
+- 前后端分离化
+
+  - Ruoyi-vue
+  
+- 微服务化
+
+  - Ruoyi-Cloud
