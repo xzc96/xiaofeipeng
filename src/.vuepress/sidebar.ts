@@ -174,10 +174,10 @@ export const sidebarConfig = sidebar({
               icon: "star",
               collapsible: true,
               children: [
-                "osi&tcp-ip-model",
+                "osi-tcp-ip-model",
                 "application-layer-protocol",
-                "http&https",
-                "http1.0&http1.1",
+                "http-https",
+                "http1.0-http1.1",
                 "http-status-codes",
                 "tcp-connection-and-disconnection",
                 "tcp-reliability-guarantee",
