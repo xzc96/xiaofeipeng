@@ -4,7 +4,6 @@ import {shikiPlugin} from "@vuepress/plugin-shiki";
 import { searchPlugin } from "@vuepress/plugin-search";
 import { commentPlugin } from "vuepress-plugin-comment2";
 import { seoPlugin } from "vuepress-plugin-seo2";
-import type { CursorEffectsOptions } from 'vuepress-plugin-cursor-effects';
 
 export default defineUserConfig({
   base: "/xiaofeipeng/",
@@ -58,19 +57,12 @@ export default defineUserConfig({
       "language": "javascript",
       "type": "text/javascript",
       "src": "/js/MouseClickEffect.js"
-    }]
+    }],
+
 
   ],
   plugins: [
-    ["sakura", {
-      num: 20,  // 默认数量
-      show: true, //  是否显示
-      zIndex: 999,   // 层级
-      img: {
-        replace: false,  // false 默认图 true 换图 需要填写httpUrl地址
-        httpUrl: '...'     // 绝对路径
-      }
-    }],
+
     //   npm i -D @vuepress/plugin-shiki@next
     // shikiPlugin({
     //   // 你的选项
@@ -108,14 +100,7 @@ export default defineUserConfig({
     seoPlugin({
       hostname: "https://cuckoocry.github.io/xiaofeipeng"
     }),
-    ['vuepress-plugin-cursor-effects', {
-      size: 2,
-      shape: 'circle',
-      zIndex: 999999,
-      strokeColor: 'random',
-      fillColor: 'random',
-      outerSpace: 2,
-    } as CursorEffectsOptions]
+
   ],
   locales: {
     "/": {
