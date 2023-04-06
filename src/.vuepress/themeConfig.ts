@@ -30,7 +30,6 @@ export const themeConfig = hopeTheme({
     "Word",
     "ReadingTime",
   ],
-
   blog: {
     medias: {
       // Baidu: "https://example.com",
@@ -115,6 +114,6 @@ export const themeConfig = hopeTheme({
     },
     feed: {
       json: true,
-    }
+    },
   },
 });

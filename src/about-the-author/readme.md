@@ -6,12 +6,17 @@ category: 博客
 ## 博客
 
 1、[vuepress](https://www.vuepress.cn/)   
-2、[vuepress-theme-hope](https://vuepress-theme-hope.gitee.io/v1/zh/guide/) 
+2、[vuepress-theme-hope](https://vuepress-theme-hope.gitee.io/v1/zh/guide/)    
 3、[vuepress-reco](http://v2.vuepress-reco.recoluan.com/))
 
 > 后两个为vuepress的加强版，第三个样式好看一点，随你选择哪一个，我这里用的是vuepress-theme-hope。
 
-> https://vuepress-theme-hope.github.io/v2/zh/cookbook/tutorial/
+> https://vuepress-theme-hope.github.io/v2/zh/cookbook/tutorial/  
+
+### 一些美化
+
+> https://blog.csdn.net/weixin_42029738/article/details/125833297
+
 获取到后初始化：
 ```shell
 npm i -D vuepress-theme-hope

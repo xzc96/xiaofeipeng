@@ -47,8 +47,30 @@ export default defineUserConfig({
     ],
     ["link", { rel: "stylesheet", href: "/iconfont/iconfont.css" }],
     ["link", { rel: "icon", href: "/favicon.ico" }],
+    // 用这个 鼠标点击事件才有效
+    ["script", {
+      "language": "javascript",
+      "type": "text/javascript",
+      "src": "https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"
+    }],
+    // 引入鼠标点击脚本
+    ["script", {
+      "language": "javascript",
+      "type": "text/javascript",
+      "src": "/js/MouseClickEffect.js"
+    }]
+
   ],
   plugins: [
+    ["sakura", {
+      num: 20,  // 默认数量
+      show: true, //  是否显示
+      zIndex: 999,   // 层级
+      img: {
+        replace: false,  // false 默认图 true 换图 需要填写httpUrl地址
+        httpUrl: '...'     // 绝对路径
+      }
+    }],
     //   npm i -D @vuepress/plugin-shiki@next
     // shikiPlugin({
     //   // 你的选项
@@ -95,7 +117,6 @@ export default defineUserConfig({
       outerSpace: 2,
     } as CursorEffectsOptions]
   ],
-
   locales: {
     "/": {
       lang: "zh-CN",
