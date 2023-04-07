@@ -58,7 +58,12 @@ export default defineUserConfig({
       "type": "text/javascript",
       "src": "/js/MouseClickEffect.js"
     }],
-
+    //  樱花特效 https://blog.csdn.net/Jay_Chou345/article/details/110190189
+    ["script", {
+      "language": "javascript",
+      "type": "text/javascript",
+      "src": "/js/sakura.js"
+    }],
 
   ],
   plugins: [

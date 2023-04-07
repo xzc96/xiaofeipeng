@@ -5,7 +5,7 @@ function getRandom(max, min) {
 }
 jQuery(document).ready(function ($) {
     $("body").click(function (e) {
-        var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+        var a = new Array("❤ 富强 ❤ ", "❤ 民主 ❤", "❤ 文明 ❤", "❤ 和谐 ❤", "❤ 自由 ❤", "❤ 平等 ❤", "❤ 公正 ❤", "❤ 法治 ❤", "❤ 爱国 ❤", "❤ 敬业 ❤", "❤ 诚信 ❤", "❤ 友善 ❤");
         var $i = $("<span/>").text(a[a_idx]);
         a_idx = (a_idx + 1) % a.length;
         var x = e.pageX,
@@ -14,15 +14,17 @@ jQuery(document).ready(function ($) {
             "z-index": 999,
             "top": y - 20,
             "left": x,
-            "position": "absolute",
+            "position": "fixed",
             "font-weight": "bold",
             "color": `rgb(${getRandom(255,0)},${getRandom(255,0)},${getRandom(255,0)})`,
             "user-select": 'none',
-            "cursor": 'default'
+            "cursor": 'default',
+            "opacity": 1,
+            "transition": "all 0.5s"
         });
         $("body").append($i);
         $i.animate({
-                "top": y - 180,
+                "top": y - 100+"px",
                 "opacity": 0
             },
             1500,
