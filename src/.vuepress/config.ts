@@ -8,6 +8,7 @@ import { seoPlugin } from "vuepress-plugin-seo2";
 export default defineUserConfig({
   base: "/xiaofeipeng/",
   theme: themeConfig,
+  port: 8099,
   title: "阿飞的博客",
   description: "vuepress-theme-hope 阿飞的博客",
   head: [
@@ -58,12 +59,12 @@ export default defineUserConfig({
       "type": "text/javascript",
       "src": "/js/MouseClickEffect.js"
     }],
-    //  樱花特效 https://blog.csdn.net/Jay_Chou345/article/details/110190189
-    ["script", {
-      "language": "javascript",
-      "type": "text/javascript",
-      "src": "/js/sakura.js"
-    }],
+    //  樱花特效 https://blog.csdn.net/Jay_Chou345/article/details/110190189  暂时注释，有点花里胡哨
+    // ["script", {
+    //   "language": "javascript",
+    //   "type": "text/javascript",
+    //   "src": "/js/sakura.js"
+    // }],
 
   ],
   plugins: [
