@@ -28,7 +28,7 @@ SQL（Structured Query Language)，标准 SQL 由 ANSI 标准委员会管理，�
 
 #### SQL 语法结构
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cb684d4c75fc430e92aaee226069c7da~tplv-k3u1fbpfcp-zoom-1.image)
+![](./images/cb684d4c75fc430e92aaee226069c7da_tplv-k3u1fbpfcp-zoom-1.png)
 
 SQL 语法结构包括：
 
