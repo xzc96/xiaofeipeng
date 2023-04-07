@@ -8,7 +8,7 @@ import { seoPlugin } from "vuepress-plugin-seo2";
 export default defineUserConfig({
   base: "/xiaofeipeng/",
   theme: themeConfig,
-  port: 8099,
+  // port: 8099,
   title: "阿飞的博客",
   description: "vuepress-theme-hope 阿飞的博客",
   head: [
