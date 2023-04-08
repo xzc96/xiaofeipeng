@@ -186,4 +186,20 @@ export const learnNote = [
     ],
 
   },
+  {
+    text: "ElasticStack技术栈",
+    icon: "edit",
+    prefix: "ElasticStack/",
+    collapsible: true,
+    children: [
+      "",
+      "1_ElasticSearch介绍与安装/",
+      "2_Beats入门简介/",
+      "3_Kibana安装与介绍/",
+      "4_Logstash入门简介/",
+      "5_ElasticStack综合案例/",
+      "6_使用ELK搭建蘑菇博客日志收集/"
+    ],
+
+  },
 ];
