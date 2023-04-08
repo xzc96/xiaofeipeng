@@ -5,6 +5,15 @@ tag:
   - Spring
 ---
 
+::: tip
+
+原始官网（推荐）：https://spring.io/projects/spring-boot     
+中文官网：https://springref.com/docs/index/spring-boot    
+更多详解（很不错）：https://pdai.tech/md/spring/springboot/springboot.html
+
+:::
+
+
 ## 1. 简单介绍⼀下 Spring?有啥缺点?
 Spring 是重量级企业开发框架**Enterprise JavaBean（EJB）** 的替代品，
 Spring 为企业级 Java 开发提供了⼀种相对简单的⽅法，通过**依赖注⼊** 和 **⾯向
@@ -79,3 +88,134 @@ Spring Boot ⽀持以下嵌⼊式 Servlet 容器:
 
 
 ## 6. 如何在 Spring Boot 应⽤程序中使⽤ Jetty ⽽不是 Tomcat?
+Spring Boot （ spring-boot-starter-web ）使⽤ Tomcat 作为默认的嵌⼊
+式 servlet 容器, 如果你想使⽤ Jetty 的话只需要修改 pom.xml (Maven)或者 bu
+ild.gradle (Gradle)就可以了。
+Maven：
+```xml
+ <!-- SpringBoot Web容器 -->
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-web</artifactId>
+   <!-- 使用Jetty，需要在spring-boot-starter-web排除spring-boot-starter-tomcat，因为SpringBoot默认使用tomcat -->
+   <exclusions>
+      <exclusion>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-tomcat</artifactId>
+      </exclusion>
+   </exclusions>
+</dependency>
+
+        <!-- Jetty适合长连接应用，就是聊天类的长连接 -->
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-jetty</artifactId>
+</dependency>
+
+
+```
+
+application.yml配置:
+配置方面，保持之前的内容即可。server.port和server.servlet.context-path的配置不变。
+```xml
+server:
+  port: XXX
+  servlet:
+      context-path: /xxxx
+
+  #jetty配置，主要是acceptors和selectors
+  jetty:
+    acceptors: 2
+    selectors: 4
+
+  #tomcat的配置可以保留，切换回来可用，反正不会生效
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # 连接数满后的排队数，默认为100
+    accept-count: 1000
+    threads:
+    # tomcat最大线程数，默认为200
+    max: 800
+    # Tomcat启动初始化的线程数，默认值10
+    min-spare: 100
+```
+
+application.properties配置
+如果properties可以配置如下:
+```properties
+
+####Jetty properties########
+server.jetty.acceptors=2 # acceptor线程数
+server.jetty.max-http-post-size=0 # put或post方法最大字节数
+server.jetty.selectors=4 # selector线程数
+```
+
+## 7. 介绍⼀下@SpringBootApplication 注解
+@SpringBootApplication 点进去，源码：
+```java
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan(
+    excludeFilters = {@Filter(
+    type = FilterType.CUSTOM,
+    classes = {TypeExcludeFilter.class}
+), @Filter(
+    type = FilterType.CUSTOM,
+    classes = {AutoConfigurationExcludeFilter.class}
+)}
+)
+public @interface SpringBootApplication {
+    @AliasFor(
+        annotation = EnableAutoConfiguration.class
+    )
+    Class<?>[] exclude() default {};
+
+    @AliasFor(
+        annotation = EnableAutoConfiguration.class
+    )
+    String[] excludeName() default {};
+
+    @AliasFor(
+        annotation = ComponentScan.class,
+        attribute = "basePackages"
+    )
+    String[] scanBasePackages() default {};
+
+    @AliasFor(
+        annotation = ComponentScan.class,
+        attribute = "basePackageClasses"
+    )
+    Class<?>[] scanBasePackageClasses() default {};
+
+    @AliasFor(
+        annotation = ComponentScan.class,
+        attribute = "nameGenerator"
+    )
+    Class<? extends BeanNameGenerator> nameGenerator() default BeanNameGenerator.class;
+
+    @AliasFor(
+        annotation = Configuration.class
+    )
+    boolean proxyBeanMethods() default true;
+}
+
+```
+
+可以看出⼤概可以把 @SpringBootApplication 看作是
+@Configuration 、 @EnableAutoConfiguration 、 @ComponentScan
+注解的集合。根据 SpringBoot 官⽹，这三个注解的作⽤分别是：
+- @EnableAutoConfiguration ：启⽤ SpringBoot 的⾃动配置机制
+- @ComponentScan ： 扫描被 @Component ( @Service , @Controller)注解的 bean，注解默认会扫描该类所在的包下所有的类。
+- @Configuration ：允许在上下⽂中注册额外的 bean 或导⼊其他配置类
+- @Target({ElementType.TYPE}) ： 指示注释类型适用的上下文。用于定义注解的使用位置，如果没有该项，表示注解可以用于任何地方
+- @Retention(RetentionPolicy.RUNTIME)：  用于指明修饰的注解的生存周期，即会保留到哪个阶段
+- @Documented ：指明修饰的注解，可以被例如javadoc此类的工具文档化，只负责标记，没有成员取值。
+- @Inherited：用于标注一个父类的注解是否可以被子类继承，如果一个注解需要被其子类所继承，则在声明时直接使用@Inherited注解即可。如果没有写此注解，则无法被子类继承。
+
+
+## 8. Spring Boot 的⾃动配置是如何实现的?
