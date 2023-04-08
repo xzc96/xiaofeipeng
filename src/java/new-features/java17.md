@@ -1,5 +1,5 @@
 ---
-title: Java 17 新特性概览
+title: Java 17 新特性概览（重要）
 category: Java
 tag:
   - Java新特性
@@ -139,11 +139,11 @@ static void testFooBar(String s) {
 
 删除远程方法调用 (RMI) 激活机制，同时保留 RMI 的其余部分。RMI 激活机制已过时且不再使用。
 
-## JEP 409：密封类（转正）
+## JEP 409:密封类（转正）
 
 密封类由 [JEP 360](https://openjdk.java.net/jeps/360) 提出预览，集成到了 Java 15 中。在 JDK 16 中， 密封类得到了改进（更加严格的引用检查和密封类的继承关系），由 [JEP 397](https://openjdk.java.net/jeps/397) 提出了再次预览。
 
-在 [Java 15 新特性概览](src/java/new-features/java15.md) 中，我有详细介绍到密封类，这里就不再做额外的介绍了。
+在 [Java 14  & 15 新特性概览](./java14-15.md) 中，我有详细介绍到密封类，这里就不再做额外的介绍了。
 
 ## JEP 410:删除实验性的 AOT 和 JIT 编译器
 
@@ -163,7 +163,7 @@ Java 程序可以通过该 API 与 Java 运行时之外的代码和数据进行�
 
 外部函数和内存 API 在 Java 17 中进行了第一轮孵化，由 [JEP 412](https://openjdk.java.net/jeps/412) 提出。第二轮孵化由[ JEP 419](https://openjdk.org/jeps/419) 提出并集成到了 Java 18 中，预览由 [JEP 424](https://openjdk.org/jeps/424) 提出并集成到了 Java 19 中。
 
-在 [Java 19 新特性概览](src/java/new-features/java19.md) 中，我有详细介绍到外部函数和内存 API，这里就不再做额外的介绍了。
+在 [Java 19 新特性概览](./java19.md) 中，我有详细介绍到外部函数和内存 API，这里就不再做额外的介绍了。
 
 ## JEP 414:向量 API（第二次孵化）
 
@@ -171,4 +171,4 @@ Java 程序可以通过该 API 与 Java 运行时之外的代码和数据进行�
 
 该孵化器 API 提供了一个 API 的初始迭代以表达一些向量计算，这些计算在运行时可靠地编译为支持的 CPU 架构上的最佳向量硬件指令，从而获得优于同等标量计算的性能，充分利用单指令多数据（SIMD）技术（大多数现代 CPU 上都可以使用的一种指令）。尽管 HotSpot 支持自动向量化，但是可转换的标量操作集有限且易受代码更改的影响。该 API 将使开发人员能够轻松地用 Java 编写可移植的高性能向量算法。
 
-在 [Java 18 新特性概览](src/java/new-features/java18.md) 中，我有详细介绍到向量 API，这里就不再做额外的介绍了。
+在 [Java 18 新特性概览](./java18.md) 中，我有详细介绍到向量 API，这里就不再做额外的介绍了。

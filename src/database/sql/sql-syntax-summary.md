@@ -190,7 +190,7 @@ FROM products;
 
 **查询所有列**
 
-```css
+```sql
 ELECT *
 FROM products;
 ```
@@ -555,7 +555,7 @@ SELECT column_name(s) FROM table2;
 | -------------------- | ---------------------- |
 | `LEFT()`、`RIGHT()`  | 左边或者右边的字符     |
 | `LOWER()`、`UPPER()` | 转换为小写或者大写     |
-| `LTRIM()`、`RTIM()`  | 去除左边或者右边的空格 |
+| `LTRIM()`、`RTRIM()`  | 去除左边或者右边的空格 |
 | `LENGTH()`           | 长度                   |
 | `SOUNDEX()`          | 转换为语音值           |
 

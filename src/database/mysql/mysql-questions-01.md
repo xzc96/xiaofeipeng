@@ -47,8 +47,6 @@ SQL 可以帮助我们：
 
 ### 什么是 MySQL？
 
-![](https://oss.javaguide.cn/github/javaguide/csdn/20210327143351823.png)
-
 **MySQL 是一种关系型数据库，主要用于持久化存储我们的系统中的一些数据比如用户信息。**
 
 由于 MySQL 是开源免费并且比较成熟的数据库，因此，MySQL 被大量使用在各种系统中。任何人都可以在 GPL(General Public License) 的许可下下载并根据个性化的需要对其进行修改。MySQL 的默认端口号是**3306**。
@@ -377,7 +375,7 @@ COMMIT;
 
 例如：事务 1 读取某表中的数据 A=20，事务 1 修改 A=A-1，事务 2 读取到 A = 19,事务 1 回滚导致对 A 的修改并为提交到数据库， A 的值还是 20。
 
-![脏读](./images/concurrency-consistency-issues-dirty-reading.png)
+![脏读](./images/concurrency-consistency-issues-dirty-reading.ee15b0b9.png)
 
 #### 丢失修改（Lost to modify）
 

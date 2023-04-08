@@ -69,7 +69,7 @@ title: Java学习&&面试指南
 - [Java 并发容器总结](./java/concurrent/java-concurrent-collections.md)
 - [Atomic 原子类总结](./java/concurrent/atomic-classes.md)
 - [AQS 详解](./java/concurrent/aqs.md)
-- [CompletableFuture入门](./java/concurrent/completablefuture-intro.md)
+- [CompletableFuture详解](./java/concurrent/completablefuture-intro.md)
 
 ### JVM (必看 :+1:)
 
@@ -90,13 +90,13 @@ JVM 这部分内容主要参考 [JVM 虚拟机规范-Java8 ](https://docs.oracle
 - [Java 9 新特性概览](./java/new-features/java9.md)
 - [Java 10 新特性概览](./java/new-features/java10.md)
 - [Java 11 新特性概览](./java/new-features/java11.md)
-- [Java 12~13 新特性概览](./java/new-features/java12-13.md)
-- [Java 14 新特性概览](./java/new-features/java14.md)
-- [Java 15 新特性概览](./java/new-features/java15.md)
+- [Java 12 & 13 新特性概览](./java/new-features/java12-13.md)
+- [Java 14 & 15 新特性概览](./java/new-features/java14-15.md)
 - [Java 16 新特性概览](./java/new-features/java16.md)
 - [Java 17 新特性概览](./java/new-features/java17.md)
 - [Java 18 新特性概览](./java/new-features/java18.md)
 - [Java 19 新特性概览](./java/new-features/java19.md)
+- [Java 20 新特性概览](./java/new-features/java20.md)
 
 ## 计算机基础
 
@@ -197,7 +197,9 @@ JVM 这部分内容主要参考 [JVM 虚拟机规范-Java8 ](https://docs.oracle
 - [3种常用的缓存读写策略详解](./database/redis/3-commonly-used-cache-read-and-write-strategies.md)
 - [Redis 5 种基本数据结构详解](./database/redis/redis-data-structures-01.md)
 - [Redis 3 种特殊数据结构详解](./database/redis/redis-data-structures-02.md)
+- [Redis 持久化机制详解](./database/redis/redis-persistence.md)
 - [Redis 内存碎片详解](./database/redis/redis-memory-fragmentation.md)
+- [Redis 常见阻塞原因总结](./database/redis/redis-common-blocking-problems-summary.md)
 - [Redis 集群详解](./database/redis/redis-cluster.md)
 
 ### MongoDB
@@ -299,6 +301,7 @@ JVM 这部分内容主要参考 [JVM 虚拟机规范-Java8 ](https://docs.oracle
 - [CAP 理论和 BASE 理论解读](./distributed-system/theorem&algorithm&protocol/cap&base-theorem.md)
 - [Paxos 算法解读](./distributed-system/theorem&algorithm&protocol/paxos-algorithm.md)
 - [Raft 算法解读](./distributed-system/theorem&algorithm&protocol/raft-algorithm.md)
+- [Gossip 协议详解](./distributed-system/theorem&algorithm&protocol/gossip-protocl.md)
 
 ### API 网关
 

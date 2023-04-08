@@ -2,21 +2,30 @@
 title: Redis常见面试题总结(下)
 category: 数据库
 tag:
-  - Redis
-head:
-  - - meta
-    - name: keywords
-      content: Redis基础,Redis常见数据结构,Redis线程模型,Redis内存管理,Redis事务,Redis性能优化
-  - - meta
-    - name: description
-      content: 一篇文章总结Redis常见的知识点和面试题，涵盖Redis基础、Redis常见数据结构、Redis线程模型、Redis内存管理、Redis事务、Redis性能优化等内容。
+- Redis
+- - meta
+- name: keywords
+  content: Redis基础,Redis常见数据结构,Redis线程模型,Redis内存管理,Redis事务,Redis性能优化
+- - meta
+- name: description
+  content: 一篇文章总结Redis常见的知识点和面试题，涵盖Redis基础、Redis常见数据结构、Redis线程模型、Redis内存管理、Redis事务、Redis性能优化等内容。
 ---
 
 ## Redis 事务
 
+### 什么是 Redis 事务？
+
+你可以将 Redis 中的事务理解为 ：**Redis 事务提供了一种将多个命令请求打包的功能。然后，再按顺序执行打包的所有命令，并且不会被中途打断。**
+
+Redis 事务实际开发中使用的非常少，功能比较鸡肋，不要将其和我们平时理解的关系型数据库的事务混淆了。
+
+除了不满足原子性和持久性之外，事务中的每条命令都会与 Redis 服务器进行网络交互，这是比较浪费资源的行为。明明一次批量执行多个命令就可以了，这种操作实在是看不懂。
+
+因此，Redis 事务是不建议在日常开发中使用的。
+
 ### 如何使用 Redis 事务？
 
-Redis 可以通过 **`MULTI`，`EXEC`，`DISCARD` 和 `WATCH`** 等命令来实现事务(transaction)功能。
+Redis 可以通过 **`MULTI`，`EXEC`，`DISCARD` 和 `WATCH`** 等命令来实现事务(Transaction)功能。
 
 ```bash
 > MULTI
@@ -131,22 +140,36 @@ Redis 的事务和我们平时理解的关系型数据库的事务不同。我�
 3. **持久性（Durability）：** 一个事务被提交之后。它对数据库中数据的改变是持久的，即使数据库发生故障也不应该对其有任何影响。
 4. **一致性（Consistency）：** 执行事务前后，数据保持一致，多个事务对同一个数据读取的结果是相同的；
 
-Redis 事务在运行错误的情况下，除了执行过程中出现错误的命令外，其他命令都能正常执行。并且，Redis 事务是不支持回滚（roll back）操作的。因此，Redis 事务其实是不满足原子性的（而且不满足持久性）。
+Redis 事务在运行错误的情况下，除了执行过程中出现错误的命令外，其他命令都能正常执行。并且，Redis 事务是不支持回滚（roll back）操作的。因此，Redis 事务其实是不满足原子性的。
 
 Redis 官网也解释了自己为啥不支持回滚。简单来说就是 Redis 开发者们觉得没必要支持回滚，这样更简单便捷并且性能更好。Redis 开发者觉得即使命令执行错误也应该在开发过程中就被发现而不是生产过程中。
 
 ![Redis 为什么不支持回滚](https://oss.javaguide.cn/github/javaguide/database/redis/redis-rollback.png)
 
-你可以将 Redis 中的事务就理解为 ：**Redis 事务提供了一种将多个命令请求打包的功能。然后，再按顺序执行打包的所有命令，并且不会被中途打断。**
-
-除了不满足原子性之外，事务中的每条命令都会与 Redis 服务器进行网络交互，这是比较浪费资源的行为。明明一次批量执行多个命令就可以了，这种操作实在是看不懂。
-
-因此，Redis 事务是不建议在日常开发中使用的。
-
 **相关 issue** :
 
-- [issue452: 关于 Redis 事务不满足原子性的问题](https://github.com/Snailclimb/JavaGuide/issues/452) 。
-- [Issue491:关于 redis 没有事务回滚？](https://github.com/Snailclimb/JavaGuide/issues/491)
+- [issue#452: 关于 Redis 事务不满足原子性的问题](https://github.com/Snailclimb/JavaGuide/issues/452) 。
+- [Issue#491:关于 Redis 没有事务回滚？](https://github.com/Snailclimb/JavaGuide/issues/491)
+
+### Redis 事务支持持久性吗？
+
+Redis 不同于 Memcached 的很重要一点就是，Redis 支持持久化，而且支持 3 种持久化方式:
+
+- 快照（snapshotting，RDB）
+- 只追加文件（append-only file, AOF）
+- RDB 和 AOF 的混合持久化(Redis 4.0 新增)
+
+与 RDB 持久化相比，AOF 持久化的实时性更好。在 Redis 的配置文件中存在三种不同的 AOF 持久化方式（ `fsync`策略），它们分别是：
+
+```bash
+appendfsync always    #每次有数据修改发生时都会调用fsync函数同步AOF文件,fsync完成后线程返回,这样会严重降低Redis的速度
+appendfsync everysec  #每秒钟调用fsync函数同步一次AOF文件
+appendfsync no        #让操作系统决定何时进行同步，一般为30秒一次
+```
+
+AOF 持久化的`fsync`策略为 no 、everysec 时都会存在数据丢失的情况 。always 下可以基本是可以满足持久性要求的，但性能太差，实际开发过程中不会使用。
+
+因此，Redis 事务的持久性也是没办法保证的。
 
 ### 如何解决 Redis 事务的缺陷？
 
@@ -160,7 +183,92 @@ Redis 从 2.6 版本开始支持执行 Lua 脚本，它的功能和事务非常�
 
 另外，Redis 7.0 新增了 [Redis functions](https://redis.io/docs/manual/programmability/functions-intro/) 特性，你可以将 Redis functions 看作是比 Lua 更强大的脚本。
 
-## Redis 性能优化
+## Redis 性能优化（重要）
+
+### 使用批量操作减少网络传输
+
+一个 Redis 命令的执行可以简化为以下 4 步：
+
+1. 发送命令
+2. 命令排队
+3. 命令执行
+4. 返回结果
+
+其中，第 1 步和第 4 步耗费时间之和称为 **Round Trip Time (RTT,往返时间)** ，也就是数据在网络上传输的时间。
+
+使用批量操作可以减少网络传输次数，进而有效减小网络开销，大幅减少 RTT。
+
+另外，除了能减少 RTT 之外，发送一次命令的 socket I/O 成本也比较高（涉及上下文切换，存在`read()`和`write()`系统调用），批量操作还可以减少 socket I/O 成本。这个在官方对 pipeline 的介绍中有提到：https://redis.io/docs/manual/pipelining/ 。
+
+#### 原生批量操作命令
+
+Redis 中有一些原生支持批量操作的命令，比如：
+
+- `mget`(获取一个或多个指定 key 的值)、`mset`(设置一个或多个指定 key 的值)、
+- `hmget`(获取指定哈希表中一个或者多个指定字段的值)、`hmset`(同时将一个或多个 field-value 对设置到指定哈希表中)、
+- `sadd`（向指定集合添加一个或多个元素）
+- ......
+
+不过，在 Redis 官方提供的分片集群解决方案 Redis Cluster 下，使用这些原生批量操作命令可能会存在一些小问题需要解决。就比如说 `mget` 无法保证所有的 key 都在同一个 **hash slot**（哈希槽）上，`mget`可能还是需要多次网络传输，原子操作也无法保证了。不过，相较于非批量操作，还是可以节省不少网络传输次数。
+
+整个步骤的简化版如下（通常由 Redis 客户端实现，无需我们自己再手动实现）：
+
+1. 找到 key 对应的所有 hash slot；
+2. 分别向对应的 Redis 节点发起 `mget` 请求获取数据；
+3. 等待所有请求执行结束，重新组装结果数据，保持跟入参 key 的顺序一致，然后返回结果。
+
+如果想要解决这个多次网络传输的问题，比较常用的办法是自己维护 key 与 slot 的关系。不过这样不太灵活，虽然带来了性能提升，但同样让系统复杂性提升。
+
+> Redis Cluster 并没有使用一致性哈希，采用的是 **哈希槽分区** ，每一个键值对都属于一个 **hash slot**（哈希槽） 。当客户端发送命令请求的时候，需要先根据 key 通过上面的计算公示找到的对应的哈希槽，然后再查询哈希槽和节点的映射关系，即可找到目标 Redis 节点。
+>
+> 我在 [Redis 集群详解（付费）](https://javaguide.cn/database/redis/redis-cluster.html) 这篇文章中详细介绍了 Redis Cluster 这部分的内容，感兴趣地可以看看。
+
+#### pipeline
+
+对于不支持批量操作的命令，我们可以利用 **pipeline（流水线)** 将一批 Redis 命令封装成一组，这些 Redis 命令会被一次性提交到 Redis 服务器，只需要一次网络传输。不过，需要注意控制一次批量操作的 **元素个数**(例如 500 以内，实际也和元素字节数有关)，避免网络传输的数据量过大。
+
+与`mget`、`mset`等原生批量操作命令一样，pipeline 同样在 Redis Cluster 上使用会存在一些小问题。原因类似，无法保证所有的 key 都在同一个 **hash slot**（哈希槽）上。如果想要使用的话，客户端需要自己维护 key 与 slot 的关系。
+
+原生批量操作命令和 pipeline 的是有区别的，使用的时候需要注意：
+
+- 原生批量操作命令是原子操作，pipeline 是非原子操作。
+- pipeline 可以打包不同的命令，原生批量操作命令不可以。
+- 原生批量操作命令是 Redis 服务端支持实现的，而 pipeline 需要服务端和客户端的共同实现。
+
+顺带补充一下 pipeline 和 Redis 事务的对比：
+
+- 事务是原子操作，pipeline 是非原子操作。两个不同的事务不会同时运行，而 pipeline 可以同时以交错方式执行。
+- Redis 事务中每个命令都需要发送到服务端，而 Pipeline 只需要发送一次，请求次数更少。
+
+> 事务可以看作是一个原子操作，但其实并不满足原子性。当我们提到 Redis 中的原子操作时，主要指的是这个操作（比如事务、Lua 脚本）不会被其他操作（比如其他事务、Lua 脚本）打扰，并不能完全保证这个操作中的所有写命令要么都执行要么都不执行。这主要也是因为 Redis 是不支持回滚操作。
+
+![](https://oss.javaguide.cn/github/javaguide/database/redis/redis-pipeline-vs-transaction.png)
+
+另外，pipeline 不适用于执行顺序有依赖关系的一批命令。就比如说，你需要将前一个命令的结果给后续的命令使用，pipeline 就没办法满足你的需求了。对于这种需求，我们可以使用 **Lua 脚本** 。
+
+#### Lua 脚本
+
+Lua 脚本同样支持批量操作多条命令。一段 Lua 脚本可以视作一条命令执行，可以看作是 **原子操作** 。也就是说，一段 Lua 脚本执行过程中不会有其他脚本或 Redis 命令同时执行，保证了操作不会被其他指令插入或打扰，这是 pipeline 所不具备的。
+
+并且，Lua 脚本中支持一些简单的逻辑处理比如使用命令读取值并在 Lua 脚本中进行处理，这同样是 pipeline 所不具备的。
+
+不过， Lua 脚本依然存在下面这些缺陷：
+
+- 如果 Lua 脚本运行时出错并中途结束，之后的操作不会进行，但是之前已经发生的写操作不会撤销，所以即使使用了 Lua 脚本，也不能实现类似数据库回滚的原子性。
+- Redis Cluster 下 Lua 脚本的原子操作也无法保证了，原因同样是无法保证所有的 key 都在同一个 **hash slot**（哈希槽）上。
+
+### 大量 key 集中过期问题
+
+我在前面提到过：对于过期 key，Redis 采用的是 **定期删除+惰性/懒汉式删除** 策略。
+
+定期删除执行过程中，如果突然遇到大量过期 key 的话，客户端请求必须等待定期清理过期 key 任务线程执行完成，因为这个这个定期任务线程是在 Redis 主线程中执行的。这就导致客户端请求没办法被及时处理，响应速度会比较慢。
+
+如何解决呢？下面是两种常见的方法：
+
+1. 给 key 设置随机过期时间。
+2. 开启 lazy-free（惰性删除/延迟释放） 。lazy-free 特性是 Redis 4.0 开始引入的，指的是让 Redis 采用异步方式延迟释放 key 使用的内存，将该操作交给单独的子线程处理，避免阻塞主线程。
+
+个人建议不管是否开启 lazy-free，我们都尽量给 key 设置随机过期时间。
 
 ### Redis bigkey
 
@@ -170,9 +278,7 @@ Redis 从 2.6 版本开始支持执行 Lua 脚本，它的功能和事务非常�
 
 #### bigkey 有什么危害？
 
-除了会消耗更多的内存空间，bigkey 对性能也会有比较大的影响。
-
-因此，我们应该尽量避免写入 bigkey！
+除了会消耗更多的内存空间，bigkey 对性能也会有比较大的影响。因此，我们应该尽量避免写入 bigkey！
 
 #### 如何发现 bigkey？
 
@@ -215,78 +321,16 @@ Biggest string found '"ballcat:oauth:refresh_auth:f6cdb384-9a9d-4f2f-af01-dc3f28
 - [redis-rdb-tools](https://github.com/sripathikrishnan/redis-rdb-tools) ：Python 语言写的用来分析 Redis 的 RDB 快照文件用的工具
 - [rdb_bigkeys](https://github.com/weiyanwei412/rdb_bigkeys) : Go 语言写的用来分析 Redis 的 RDB 快照文件用的工具，性能更好。
 
-### 大量 key 集中过期问题
+### Redis 内存碎片
 
-我在上面提到过：对于过期 key，Redis 采用的是 **定期删除+惰性/懒汉式删除** 策略。
+**相关问题** ：
 
-定期删除执行过程中，如果突然遇到大量过期 key 的话，客户端请求必须等待定期清理过期 key 任务线程执行完成，因为这个这个定期任务线程是在 Redis 主线程中执行的。这就导致客户端请求没办法被及时处理，响应速度会比较慢。
+1. 什么是内存碎片?为什么会有 Redis 内存碎片?
+2. 如何清理 Redis 内存碎片？
 
-如何解决呢？下面是两种常见的方法：
+**参考答案** ：[Redis 内存碎片详解](https://javaguide.cn/database/redis/redis-memory-fragmentation.html)。
 
-1. 给 key 设置随机过期时间。
-2. 开启 lazy-free（惰性删除/延迟释放） 。lazy-free 特性是 Redis 4.0 开始引入的，指的是让 Redis 采用异步方式延迟释放 key 使用的内存，将该操作交给单独的子线程处理，避免阻塞主线程。
-
-个人建议不管是否开启 lazy-free，我们都尽量给 key 设置随机过期时间。
-
-### 使用批量操作减少网络传输
-
-一个 Redis 命令的执行可以简化为以下 4 步：
-
-1. 发送命令
-2. 命令排队
-3. 命令执行
-4. 返回结果
-
-其中，第 1 步和第 4 步耗费时间之和称为 **Round Trip Time (RTT,往返时间)** ，也就是数据在网络上传输的时间。
-
-**使用批量操作可以减少网络传输次数，进而有效减小网络开销，大幅减少 RTT。**
-
-#### 原生批量操作命令
-
-Redis 中有一些原生支持批量操作的命令，比如：
-
-- `mget`(获取一个或多个指定 key 的值)、`mset`(设置一个或多个指定 key 的值)、
-- `hmget`(获取指定哈希表中一个或者多个指定字段的值)、`hmset`(同时将一个或多个 field-value 对设置到指定哈希表中)、
-- `sadd`（向指定集合添加一个或多个元素）
-- ......
-
-不过，在 Redis 官方提供的分片集群解决方案 Redis Cluster 下，使用这些原生批量操作命令可能会存在一些小问题需要解决。就比如说 `mget` 无法保证所有的 key 都在同一个 **hash slot**（哈希槽）上，`mget`可能还是需要多次网络传输，原子操作也无法保证了。不过，相较于非批量操作，还是可以节省不少网络传输次数。
-
-整个步骤的简化版如下（通常由 Redis 客户端实现，无需我们自己再手动实现）：
-
-1. 找到 key 对应的所有 hash slot；
-2. 分别向对应的 Redis 节点发起 `mget` 请求获取数据；
-3. 等待所有请求执行结束，重新组装结果数据，保持跟入参 key 的顺序一致，然后返回结果。
-
-如果想要解决这个多次网络传输的问题，比较常用的办法是自己维护 key 与 slot 的关系。不过这样不太灵活，虽然带来了性能提升，但同样让系统复杂性提升。
-
-> Redis Cluster 并没有使用一致性哈希，采用的是 **哈希槽分区** ，每一个键值对都属于一个 **hash slot**（哈希槽） 。当客户端发送命令请求的时候，需要先根据 key 通过上面的计算公示找到的对应的哈希槽，然后再查询哈希槽和节点的映射关系，即可找到目标 Redis 节点。
->
-> 我在 [Redis 集群详解（付费）](https://javaguide.cn/database/redis/redis-cluster.html) 这篇文章中详细介绍了 Redis Cluster 这部分的内容，感兴趣地可以看看。
-
-#### pipeline
-
-对于不支持批量操作的命令，我们可以利用 **pipeline（流水线)** 将一批 Redis 命令封装成一组，这些 Redis 命令会被一次性提交到 Redis 服务器，只需要一次网络传输。不过，需要注意控制一次批量操作的 **元素个数**(例如 500 以内，实际也和元素字节数有关)，避免网络传输的数据量过大。
-
-与`mget`、`mset`等原生批量操作命令一样，pipeline 同样在 Redis Cluster 上使用会存在一些小问题。原因类似，无法保证所有的 key 都在同一个 **hash slot**（哈希槽）上。如果想要使用的话，客户端需要自己维护 key 与 slot 的关系。
-
-原生批量操作命令和 pipeline 的是有区别的，使用的时候需要注意：
-
-- 原生批量操作命令是原子操作，pipeline 是非原子操作；
-- pipeline 可以打包不同的命令，原生批量操作命令不可以；
-- 原生批量操作命令是 Redis 服务端支持实现的，而 pipeline 需要服务端和客户端的共同实现。
-
-另外，pipeline 不适用于执行顺序有依赖关系的一批命令。就比如说，你需要将前一个命令的结果给后续的命令使用，pipeline 就没办法满足你的需求了。对于这种需求，我们可以使用 **Lua 脚本** 。
-
-#### Lua 脚本
-
-Lua 脚本同样支持批量操作多条命令。一段 Lua 脚本可以视作一条命令执行，可以看作是原子操作。一段 Lua 脚本执行过程中不会有其他脚本或 Redis 命令同时执行，保证了操作不会被其他指令插入或打扰，这是 pipeline 所不具备的。
-
-并且，Lua 脚本中支持一些简单的逻辑处理比如使用命令读取值并在 Lua 脚本中进行处理，这同样是 pipeline 所不具备的。
-
-不过， Redis Cluster 下 Lua 脚本的原子操作也无法保证了，原因同样是无法保证所有的 key 都在同一个 **hash slot**（哈希槽）上。
-
-## Redis 生产问题
+## Redis 生产问题（重要）
 
 ### 缓存穿透
 
@@ -425,7 +469,11 @@ Cache Aside Pattern 中遇到写请求是这样的：更新 DB，然后直接删
 1. **缓存失效时间变短（不推荐，治标不治本）** ：我们让缓存数据的过期时间变短，这样的话缓存就会从数据库中加载数据。另外，这种解决办法对于先操作缓存后操作数据库的场景不适用。
 2. **增加 cache 更新重试机制（常用）**： 如果 cache 服务当前不可用导致缓存删除失败的话，我们就隔一段时间进行重试，重试次数可以自己定。如果多次重试还是失败的话，我们可以把当前更新失败的 key 存入队列中，等缓存服务可用之后，再将缓存中对应的 key 删除即可。
 
-相关文章推荐：[缓存和数据库一致性问题，看这篇就够了 - 水滴与银弹](https://mp.weixin.qq.com/s?__biz=MzIyOTYxNDI5OA==&mid=2247487312&idx=1&sn=fa19566f5729d6598155b5c676eee62d&chksm=e8beb8e5dfc931f3e35655da9da0b61c79f2843101c130cf38996446975014f958a6481aacf1&scene=178&cur_album_id=1699766580538032128#rd)
+相关文章推荐：[缓存和数据库一致性问题，看这篇就够了 - 水滴与银弹](https://mp.weixin.qq.com/s?__biz=MzIyOTYxNDI5OA==&mid=2247487312&idx=1&sn=fa19566f5729d6598155b5c676eee62d&chksm=e8beb8e5dfc931f3e35655da9da0b61c79f2843101c130cf38996446975014f958a6481aacf1&scene=178&cur_album_id=1699766580538032128#rd)。
+
+### 哪些情况可能会导致 Redis 阻塞？
+
+单独抽了一篇文章来总结可能会导致 Redis 阻塞的情况：[Redis 常见阻塞原因总结](./redis-memory-fragmentation.md)。
 
 ## Redis 集群
 
@@ -469,4 +517,5 @@ Cache Aside Pattern 中遇到写请求是这样的：更新 DB，然后直接删
 
 - 《Redis 开发与运维》
 - 《Redis 设计与实现》
-- Redis Transactions : https://redis.io/docs/manual/transactions/ 。
+- Redis Transactions : https://redis.io/docs/manual/transactions/
+- What is Redis Pipeline：https://buildatscale.tech/what-is-redis-pipeline/
