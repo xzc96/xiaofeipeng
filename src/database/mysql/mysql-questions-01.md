@@ -91,7 +91,7 @@ MySQL 核心在于存储引擎，想要深入学习 MySQL，必定要深入研�
 
 MySQL 支持多种存储引擎，你可以通过 `show engines` 命令来查看 MySQL 支持的所有存储引擎。
 
-![查看 MySQL 提供的所有存储引擎](https://oss.javaguide.cn/github/javaguide/mysql/image-20220510105408703.png)
+![查看 MySQL 提供的所有存储引擎](./images/image-20220510105408703.png)
 
 从上图我们可以查看出， MySQL 当前默认的存储引擎是 InnoDB。并且，所有的存储引擎中只有 InnoDB 是事务性存储引擎，也就是说只有 InnoDB 支持事务。
 
@@ -113,18 +113,18 @@ MySQL 5.5.5 之前，MyISAM 是 MySQL 的默认存储引擎。5.5.5 版本之后
 
 你也可以通过 `show variables like '%storage_engine%'` 命令直接查看 MySQL 当前默认的存储引擎。
 
-![查看 MySQL 当前默认的存储引擎](https://oss.javaguide.cn/github/javaguide/mysql/image-20220510105837786.png)
+![查看 MySQL 当前默认的存储引擎](./images/image-20220510105837786.png)
 
 如果你只想查看数据库中某个表使用的存储引擎的话，可以使用 `show table status from db_name where name='table_name'`命令。
 
-![查看表的存储引擎](https://oss.javaguide.cn/github/javaguide/mysql/image-20220510110549140.png)
+![查看表的存储引擎](./images/image-20220510110549140.png)
 
 如果你想要深入了解每个存储引擎以及它们之间的区别，推荐你去阅读以下 MySQL 官方文档对应的介绍(面试不会问这么细，了解即可)：
 
 - InnoDB 存储引擎详细介绍：https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html 。
 - 其他存储引擎详细介绍：https://dev.mysql.com/doc/refman/8.0/en/storage-engines.html 。
 
-![](https://oss.javaguide.cn/github/javaguide/mysql/image-20220510155143458.png)
+![](./images/image-20220510155143458.png)
 
 ### MySQL 存储引擎架构了解吗？
 
@@ -166,7 +166,7 @@ MyISAM 不支持，而 InnoDB 支持。
 
 阿里的《Java 开发手册》也是明确规定禁止使用外键的。
 
-![](https://oss.javaguide.cn/github/javaguide/mysql/image-20220510090309427.png)
+![](./images/image-20220510090309427.png)
 
 不过，在代码中进行约束的话，对程序员的能力要求更高，具体是否要采用外键还是要根据你的项目实际情况而定。
 
@@ -196,7 +196,7 @@ InnoDB 引擎中，其数据文件本身就是索引文件。相比 MyISAM，索
 
 InnoDB 的性能比 MyISAM 更强大，不管是在读写混合模式下还是只读模式下，随着 CPU 核数的增加，InnoDB 的读写能力呈线性增长。MyISAM 因为读写不能并发，它的处理能力跟核数没关系。
 
-![InnoDB 和 MyISAM 性能对比](https://oss.javaguide.cn/github/javaguide/mysql/innodb-myisam-performance-comparison.png)
+![InnoDB 和 MyISAM 性能对比](./images/innodb-myisam-performance-comparison.png)
 
 **总结** ：
 
@@ -210,7 +210,7 @@ InnoDB 的性能比 MyISAM 更强大，不管是在读写混合模式下还是�
 
 最后，再分享一张图片给你，这张图片详细对比了常见的几种 MySQL 存储引擎。
 
-![常见的几种 MySQL 存储引擎对比](https://oss.javaguide.cn/github/javaguide/mysql/comparison-of-common-mysql-storage-engines.png)
+![常见的几种 MySQL 存储引擎对比](./images/comparison-of-common-mysql-storage-engines.png)
 
 ### MyISAM 和 InnoDB 如何选择？
 
@@ -271,9 +271,9 @@ select sql_no_cache count(*) from usr;
 - undo log 如何保证事务的原子性？
 - ......
 
-上诉问题的答案可以在[《Java 面试指北》(付费)](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html) 的 **「技术面试题篇」** 中找到。
-
-![《Java 面试指北》技术面试题篇](https://oss.javaguide.cn/javamianshizhibei/technical-interview-questions.png)
+```java
+//  TODO
+```
 
 ## MySQL 事务
 
