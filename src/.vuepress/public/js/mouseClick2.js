@@ -1,6 +1,7 @@
+var arr = new Array("♥你好棒♥", "♥加油♥", "♥爱你♥", "♥奥利给♥", "♥好好学习♥", "♥早睡早起♥" ,"♥热爱生活♥", "♥爱护自己♥", "♥再接再厉♥", "♥你可以♥", "♥一定行♥");
 !function(e, t, a) {
     function r() {
-        for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+        for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ");color:" + s[e].color + ";z-index:99999");
         requestAnimationFrame(r)
     }
     function n() {
@@ -13,14 +14,15 @@
     function o(e) {
         var a = t.createElement("div");
         a.className = "heart",
-            s.push({
-                el: a,
-                x: e.clientX - 5,
-                y: e.clientY - 5,
-                scale: 1,
-                alpha: 1,
-                color: c()
-            }),
+            a.innerText = arr[parseInt(arr.length * Math.random())];
+        s.push({
+            el: a,
+            x: e.clientX+5,
+            y: e.clientY-10,
+            scale: 1,
+            alpha: 1,
+            color: c()
+        }),
             t.body.appendChild(a)
     }
     function i(e) {
@@ -41,7 +43,7 @@
         function(e) {
             setTimeout(e, 1e3 / 60)
         },
-        i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"),
+        i(".heart{position: fixed;}"),
         n(),
         r()
 } (window, document);

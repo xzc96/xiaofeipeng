@@ -16,13 +16,5 @@ export const navbarConfig = navbar([
     text: "网站相关",
     icon: "about",
     link: "/about-the-author/"
-    // children: [
-    //   { text: "关于", icon: "zuozhe", link: "/about-the-author/" },
-    //   {
-    //     text: "更新历史",
-    //     icon: "history",
-    //     link: "/timeline/",
-    //   }
-    // ],
   },
 ]);
