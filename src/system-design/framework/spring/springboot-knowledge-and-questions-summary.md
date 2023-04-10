@@ -11,6 +11,7 @@ tag:
 中文官网：https://springref.com/docs/index/spring-boot    
 更多详解（很不错）：https://pdai.tech/md/spring/springboot/springboot.html
 
+慕课教程（建议先看完这个）：https://www.imooc.com/wiki/springbootlesson/origin.html
 :::
 
 

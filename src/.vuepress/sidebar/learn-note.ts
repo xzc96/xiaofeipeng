@@ -162,6 +162,16 @@ export const learnNote = [
 
   },
   {
+    text: "SpringBoot",
+    icon: "edit",
+    prefix: "SpringBoot/",
+    collapsible: true,
+    children: [
+      "",
+    ],
+
+  },
+  {
     text: "SpringCloud",
     icon: "edit",
     prefix: "SpringCloud/",

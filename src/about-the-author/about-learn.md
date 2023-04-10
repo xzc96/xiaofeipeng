@@ -69,4 +69,13 @@ netty，SQL优化的经验
 
 掘金：https://juejin.cn/post/6844904125709156359
 
-推荐一个文件转换的网址: (https://cloudconvert.com/epub-to-pdf)[https://cloudconvert.com/epub-to-pdf]
+推荐一个文件转换的网址: https://cloudconvert.com/epub-to-pdf
+
+## 学习教程
+尚硅谷_SpringSecurity教程: http://www.atguigu.com/video/33/
+netty： http://www.atguigu.com/video/56/
+
+全套资料：https://shimo.im/docs/aBAYVEyDoBUbd13j/read
+全套视频：http://www.atguigu.com/video/java/#step3
+
+尚硅谷_Java面试真题50道：http://www.atguigu.com/video/245/
