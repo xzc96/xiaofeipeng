@@ -23,7 +23,7 @@ Redis 没有外部依赖，Linux 和 OS X 是 Redis 开发和测试最多的两�
 
 个人学习的话，你可以自己本机安装 Redis 或者通过 Redis 官网提供的[在线 Redis 环境](https://try.redis.io/)（少部分命令无法使用）来实际体验 Redis。
 
-![try-redis](https://oss.javaguide.cn/github/javaguide/database/redis/try.redis.io.png)
+![try-redis](./images/try.redis.io.png)
 
 全世界有非常多的网站使用到了 Redis ，[techstacks.io](https://techstacks.io/) 专门维护了一个[使用 Redis 的热门站点列表](https://techstacks.io/tech/redis) ，感兴趣的话可以看看。
 

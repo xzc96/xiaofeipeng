@@ -5,7 +5,7 @@ import { books } from "./sidebar/books";
 import { ai } from "./sidebar/ai";
 import { learningPath } from "./sidebar/learning-path";
 import { openSourceProject } from "./sidebar/open-source-project";
-import { learnNote } from "./sidebar/learnNote";
+import { learnNote } from "./sidebar/learn-note";
 import {essay} from "./sidebar/essay";
 
 // @ts-ignore
