@@ -212,4 +212,14 @@ export const learnNote = [
     ],
 
   },
+  {
+    text: "RocketMQ",
+    icon: "edit",
+    prefix: "RocketMQ/",
+    collapsible: true,
+    children: [
+      ""
+    ],
+
+  },
 ];
