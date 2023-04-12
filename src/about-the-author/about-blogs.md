@@ -47,8 +47,27 @@ npm i -D vuepress-theme-hope
 其实很多知识他就在那里，搬过来很容易，但是搬进自己的脑子，再融会贯通就不是一件轻松的事了。所以我以pdai为指导，按照陌溪的学习方式（视频结合笔记），
 系统的对自己知识体系结构进行梳理和查漏补缺。在用JavaGuide的面试题进行巩固。
 
+### Gitee 和 GitHub同步
+> 参考：https://gitee.com/help/articles/4284#article-header1
 
+1. 首先通过 git remote -v 查看您要同步的仓库的远程库列表。Gitee和GitHub少了就添加
+```shell
+git remote add 远程库名 远程库地址
+eg: git remote add gitee git@github.com:xxx/xxx.git
+```
+如果在 add 的时候出现error: Could not remove config section 'remote.xxx'.一类的错误，通过把仓库下.git/config 文件里面的 [remote "xxx"] 删掉或者是用别的远程库名即可。
 
+2. 从 GitHub 上拉取最新代码到本地(或者 Gitee)
+```shell
+git pull 远程库名 分支名
+eg：git pull origin master
+```
+
+3. 推送本地最新代码到 Gitee（GitHub） 上。
+```shell
+git push 远程库名 分支名
+eg：git push gitee master
+```
 ### 计划和要求
 
 目前博客内容还是以面试题为主导，我会偶尔不定时的更新JavaGuide最新内容。我也会跟着内容复习和学习，其中可能会更改或补充一些自己的内容。  
