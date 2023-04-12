@@ -106,7 +106,11 @@ projects:
     desc: 炼码
     link: https://www.lintcode.com/
 
-
+  - icon: link
+    name: 二哥的Java进阶之路
+    desc: 二哥的Java进阶之路
+    link: https://tobebetterjavaer.com/
+  
 footer: 子在川上曰：“逝者如斯夫，不舍昼夜。”
 ---
 
