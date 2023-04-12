@@ -63,10 +63,13 @@ git pull 远程库名 分支名
 eg：git pull origin master
 ```
 
-3. 推送本地最新代码到 Gitee（GitHub） 上。
+3. 推送本地最新代码到 Gitee（GitHub） 上。也可直接推送到GitHub，然后再gitee上拉取
 ```shell
 git push 远程库名 分支名
-eg：git push gitee master
+
+git push gitee master
+git pull origin master
+
 ```
 ### 计划和要求
 
