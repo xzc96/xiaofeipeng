@@ -60,7 +60,9 @@ eg: git remote add gitee git@github.com:xxx/xxx.git
 2. 从 GitHub 上拉取最新代码到本地(或者 Gitee)
 ```shell
 git pull 远程库名 分支名
-eg：git pull origin master
+
+git pull origin master
+git pull gitee master
 ```
 
 3. 推送本地最新代码到 Gitee（GitHub） 上。也可直接推送到GitHub，然后再gitee上拉取
@@ -68,7 +70,7 @@ eg：git pull origin master
 git push 远程库名 分支名
 
 git push gitee master
-git pull origin master
+git push origin master
 
 ```
 ### 计划和要求
