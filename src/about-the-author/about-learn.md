@@ -142,6 +142,17 @@ category: 个人笔记
   6. 熟悉常用中间件的原理和使用，RPC框架（Dubbo、gRPC）、缓存（Redis、Memcached）、消息队列（RocketMQ）、分布式锁（Zookeeper）等。
 :::
 
+### 终极
+
+1. 熟练掌握 Java  基础知识，有良好的编程习惯，具备良好的面向对象编程思想；
+2. 熟悉 Java 的集合框架、如 HashMap， ArrayList等，IO流、反射等；
+3. 熟悉 JVM，GC 算法，如Java虚拟机内部结构、类加载机制、常见的垃圾回收器的优缺点及调优方法等；
+4. 熟悉 Java 并发编程，如 JMM，volatile，CAS ，线程池等；
+5. 熟悉 Spring，SpringMVC，SpringBoot，SpringCloud，MyBatis等开源框架的使用和原理，如依赖注入、AOP、控制反转等；
+6. 熟悉常用中间件的原理和使用，如RocketMQ等。
+7. 熟练掌握常用数据库 MySQL，PostgreSQL，Redis等的使用，SQL语句的优化技巧；
+8. 熟悉常用的基本数据结构、算法和设计模式的实现和运用；
+9. 不断学习，具备良好的沟通与协作能力，善于分享所学知识。具有良好的代码规范和工程实践，能够快速定位和解决问题，以及进行系统性能优化。
 
 ## 一些面试题
 

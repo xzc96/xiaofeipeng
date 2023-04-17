@@ -67,10 +67,10 @@ Spring 旨在简化 J2EE 企业应⽤程序开发。Spring Boot 旨在简化 Spr
 Spring Boot Starters 是⼀系列依赖关系的集合，因为它的存在，项⽬的依赖之
 间的关系对我们来说变的更加简单了。    
 
-举个例⼦：在没有 Spring Boot Starters 之前，我们开发 REST 服务或 Web 应
-⽤程序时; 我们需要使⽤像 Spring MVC，Tomcat 和 Jackson 这样的库，这些依
-赖我们需要⼿动⼀个⼀个添加。但是，有了 Spring Boot Starters 我们只需要⼀
-个只需添加⼀个spring-boot-starter-web⼀个依赖就可以了，这个依赖包含的
+举个例⼦：在没有 `Spring Boot Starters` 之前，我们开发 REST 服务或 Web 应
+⽤程序时; 我们需要使⽤像 `Spring MVC`，`Tomcat` 和 `Jackson` 这样的库，这些依
+赖我们需要⼿动⼀个⼀个添加。但是，有了 `Spring Boot Starters` 我们只需要⼀
+个只需添加⼀个`spring-boot-starter-web`⼀个依赖就可以了，这个依赖包含的
 ⼦依赖中包含了我们开发 REST 服务需要的所有依赖。
 
 ## 5. Spring Boot ⽀持哪些内嵌 Servlet 容器？
@@ -82,7 +82,7 @@ Spring Boot ⽀持以下嵌⼊式 Servlet 容器:
 | Jetty | 9.4 | 3.1 | -------- |
 | Undertow | 2.0 | 4.0 | -------- |
 
-您还可以将 Spring 引导应⽤程序部署到任何 Servlet 3.1+兼容的 Web 容器中。   
+您还可以将 `Spring` 引导应⽤程序部署到任何 Servlet 3.1+兼容的 Web 容器中。   
 
 这就是你为什么可以通过直接像运⾏ 普通 Java 项⽬⼀样运⾏ SpringBoot 项
 ⽬。这样的确省事了很多，⽅便了我们进⾏开发，降低了学习难度。  
@@ -90,7 +90,7 @@ Spring Boot ⽀持以下嵌⼊式 Servlet 容器:
 
 ## 6. 如何在 Spring Boot 应⽤程序中使⽤ Jetty ⽽不是 Tomcat?
 Spring Boot （ spring-boot-starter-web ）使⽤ Tomcat 作为默认的嵌⼊
-式 servlet 容器, 如果你想使⽤ Jetty 的话只需要修改 pom.xml (Maven)或者 bu
+式 `servlet` 容器, 如果你想使⽤ `Jetty` 的话只需要修改 pom.xml (Maven)或者 bu
 ild.gradle (Gradle)就可以了。
 Maven：
 ```xml
@@ -142,7 +142,7 @@ server:
     min-spare: 100
 ```
 
-application.properties配置
+`application.properties`配置
 如果properties可以配置如下:
 ```properties
 
@@ -153,7 +153,7 @@ server.jetty.selectors=4 # selector线程数
 ```
 
 ## 7. 介绍⼀下@SpringBootApplication 注解
-@SpringBootApplication 点进去，源码：
+`@SpringBootApplication` 点进去，源码：
 ```java
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
