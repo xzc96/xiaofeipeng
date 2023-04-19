@@ -223,13 +223,20 @@ public @interface SpringBootApplication {
 
 这个是因为 `@SpringBootApplication` 注解的原因，在上⼀个问题中已经提 到了这个注解。我们知道  `@SpringBootApplication` 看作是 ` @Configuration`、` @EnableAutoConfiguration` 、 `@ComponentScan` 注解的集合
 
-- @EnableAutoConfiguration ：启⽤ SpringBoot 的⾃动配置机制
-- @ComponentScan ： 扫描被 @Component ( @Service , @Controller )注解的 bean，注解默认会扫描该类所在的包下所有的类。
-- @Configuration ：允许在上下⽂中注册额外的 bean 或导⼊其他配置类
+- `@EnableAutoConfiguration` ：启⽤ SpringBoot 的⾃动配置机制
+- `@ComponentScan` ： 扫描被 @Component ( @Service , @Controller )注解的 bean，注解默认会扫描该类所在的包下所有的类。
+- `@Configuration` ：允许在上下⽂中注册额外的 `bean` 或导⼊其他配置类
 
-@EnableAutoConfiguration 是启动⾃动配置的关键，源码如下(建议⾃⼰打 断点调试，⾛⼀遍基本的流程)：
-@EnableAutoConfiguration 注解通过 Spring 提供的  @Import 注解导⼊了 AutoConfigurationImportSelector 类（ @Import 注解可以导⼊配置 类或者`Bean` 到当前类中）。
+`@EnableAutoConfiguration` 是启动⾃动配置的关键，源码如下(建议⾃⼰打 断点调试，⾛⼀遍基本的流程)：
+`@EnableAutoConfiguration` 注解通过 Spring 提供的  @Import 注解导⼊了 AutoConfigurationImportSelector 类（ @Import 注解可以导⼊配置 类或者`Bean` 到当前类中）。
 
 AutoConfigurationImportSelector 类中 getCandidateConfigurations ⽅法会将所有⾃动配置类的信息以 List 的形式返回。这些配置信息会被 Spring容器作 bean 来管理。
 
 ⾃动配置信息有了，那么⾃动配置还差什么呢？
+`@Conditional` 注解。 @ConditionalOnClass (指定的类必须存在于类路径 下), @ConditionalOnBean (容器中是否有指定的 Bean)等等都是对 @Conditi onal 注解的扩展。   
+拿 `Spring Security` 的⾃动配置举个例⼦: SecurityAutoConfiguration 中导⼊了 WebSecurityEnablerConfiguration 类， WebSecurityEnablerCon
+figuration 源代码如下：
+WebSecurityEnablerConfiguration 类中使⽤ @ConditionalOnBean 指
+定了容器中必须还有 WebSecurityConfigurerAdapter 类或其实现类。所
+以，⼀般情况下 Spring Security 配置类都会去实现 WebSecurityConfigurer
+Adapter ，这样⾃动将配置就完成了。

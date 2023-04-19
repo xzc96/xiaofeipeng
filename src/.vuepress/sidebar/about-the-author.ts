@@ -17,6 +17,12 @@ export const aboutTheAuthor = [
     link: "about-learn",
     collapsable: false
   },
+  {
+    text: "面试题",
+    icon: "book",
+    link: "about-interview",
+    collapsable: false
+  },
     {
       text: "更新历史",
       icon: "history",

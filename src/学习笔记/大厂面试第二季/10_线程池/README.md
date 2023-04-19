@@ -1,6 +1,13 @@
-# 线程池（Java中有哪些方法获取多线程）
+---
+title: 线程池（Java中有哪些方法获取多线程）
+date: 2023-04-19
+category: 线程池
+tag:
+- 线程池
+---
 
-## 前言
+
+## 1、前言
 
 获取多线程的方法，我们都知道有三种，还有一种是实现Callable接口
 - 实例化Thread类
@@ -8,7 +15,7 @@
 - 实现Callable接口
 - 使用线程池获取
 
-## Callable接口
+### 1.1、Callable接口
 
 Callable接口，是一种让线程执行完成后，能够返回结果的
 
@@ -29,7 +36,7 @@ class MyThread implements Runnable {
 
 我们知道，实现Runnable接口的时候，需要重写run方法，也就是线程在启动的时候，会自动调用的方法
 
-同理，我们实现Callable接口，也需要实现call方法，但是这个时候我们还需要有返回值，这个Callable接口的应用场景一般就在于批处理业务，比如转账的时候，需要给一会返回结果的状态码回来，代表本次操作成功还是失败。
+同理，我们实现Callable接口，也需要实现`call`方法，但是这个时候我们还需要有返回值，这个Callable接口的应用场景一般就在于批处理业务，比如转账的时候，需要给一会返回结果的状态码回来，代表本次操作成功还是失败。
 
 ```
 /**
@@ -90,7 +97,7 @@ while(!futureTask.isDone()) {
 }
 ```
 
-### 注意
+### 1.2、注意
 
 多个线程执行 一个FutureTask的时候，只会计算一次
 
@@ -114,9 +121,9 @@ new Thread(futureTask, "AAA").start();
 new Thread(futureTask2, "BBB").start();
 ```
 
-## ThreadPoolExecutor
+## 2、ThreadPoolExecutor(线程池)
 
-### 为什么用线程池
+### 2.1、为什么用线程池
 
 线程池做的主要工作就是控制运行的线程的数量，`处理过程中，将任务放入到队列中`，然后线程创建后，启动这些任务，
 `如果线程数量超过了最大数量的线程排队等候`，等其它线程执行完毕，再从队列中取出任务来执行。
@@ -125,7 +132,7 @@ new Thread(futureTask2, "BBB").start();
 
 线程池中的任务是放入到阻塞队列中的
 
-### 线程池的好处
+### 2.2、线程池的好处
 
 多核处理的好处是：省略的上下文的切换开销
 
@@ -137,7 +144,7 @@ new Thread(futureTask2, "BBB").start();
 - 提高响应速度。当任务到达时，任务可以不需要等到线程创建就立即执行
 - 提高线程的可管理性。线程是稀缺资源，如果无限创建，不仅会消耗系统资源，还会降低系统的稳定性，使用线程池可以进行统一的分配，调优和监控
 
-### 架构说明
+### 2.3、架构说明
 
 Java中线程池是通过Executor框架实现的，该框架中用到了Executor，Executors（代表工具类），ExecutorService，ThreadPoolExecutor这几个类。
 
@@ -147,18 +154,18 @@ Java中线程池是通过Executor框架实现的，该框架中用到了Executor
 
 
 
-### 创建线程池
+### 2.4、创建线程池
 
-- Executors.newFixedThreadPool(int i) ：创建一个拥有 i 个线程的线程池
+- `Executors.newFixedThreadPool(int i)` ：创建一个拥有 i 个线程的线程池
   - 执行长期的任务，性能好很多
   - 创建一个定长线程池，可控制线程数最大并发数，超出的线程会在队列中等待
-- Executors.newSingleThreadExecutor：创建一个只有1个线程的 单线程池
+- `Executors.newSingleThreadExecutor`：创建一个只有1个线程的 单线程池
   - 一个任务一个任务执行的场景
   - 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序执行
-- Executors.newCacheThreadPool();  创建一个可扩容的线程池
+- `Executors.newCacheThreadPool()`;  创建一个可扩容的线程池
   - 执行很多短期异步的小程序或者负载教轻的服务器
   - 创建一个可缓存线程池，如果线程长度超过处理需要，可灵活回收空闲线程，如无可回收，则新建新线程
-- Executors.newScheduledThreadPool(int corePoolSize)：线程池支持定时以及周期性执行任务，创建一个corePoolSize为传入参数，最大线程数为整形的最大数的线程池
+- `Executors.newScheduledThreadPool(int corePoolSize)`：线程池支持定时以及周期性执行任务，创建一个corePoolSize为传入参数，最大线程数为整形的最大数的线程池
 
 具体使用，首先我们需要使用Executors工具类，进行创建线程池，这里创建了一个拥有5个线程的线程池
 
@@ -251,7 +258,7 @@ pool-1-thread-5	 给用户:6 办理业务
 
 
 
-### 创建周期性执行任务的线程池
+### 2.5、创建周期性执行任务的线程池
 
 Executors.newScheduledThreadPool(int corePoolSize)：
 
@@ -317,15 +324,36 @@ public ScheduledThreadPoolExecutor(int corePoolSize) {
                                                      TimeUnit unit)
 ```
 
-## 底层实现
+## 3、底层实现
 
-我们通过查看源码，点击了Executors.newSingleThreadExecutor 和 Executors.newFixedThreadPool能够发现底层都是使用了ThreadPoolExecutor
+我们通过查看源码，点击了`Executors.newSingleThreadExecutor` 和 `Executors.newFixedThreadPool`能够发现底层都是使用了`ThreadPoolExecutor`
 
-![image-20200317182004293](./images/image-20200317182004293.png)
+```java
+    /**
+     * Creates a thread pool that reuses a fixed number of threads
+     * operating off a shared unbounded queue.  At any point, at most
+     * {@code nThreads} threads will be active processing tasks.
+     * If additional tasks are submitted when all threads are active,
+     * they will wait in the queue until a thread is available.
+     * If any thread terminates due to a failure during execution
+     * prior to shutdown, a new one will take its place if needed to
+     * execute subsequent tasks.  The threads in the pool will exist
+     * until it is explicitly {@link ExecutorService#shutdown shutdown}.
+     *
+     * @param nThreads the number of threads in the pool
+     * @return the newly created thread pool
+     * @throws IllegalArgumentException if {@code nThreads <= 0}
+     */
+    public static ExecutorService newFixedThreadPool(int nThreads) {
+        return new ThreadPoolExecutor(nThreads, nThreads,
+                                      0L, TimeUnit.MILLISECONDS,
+                                      new LinkedBlockingQueue<Runnable>());
+    }
 
-我们可以看到线程池的内部，还使用到了LinkedBlockingQueue 链表阻塞队列
+```
+我们可以看到线程池的内部，还使用到了`LinkedBlockingQueue` 链表阻塞队列
 
-同时在查看Executors.newCacheThreadPool 看到底层用的是 SynchronousBlockingQueue阻塞队列
+同时在查看`Executors.newCacheThreadPool` 看到底层用的是 `SynchronousBlockingQueue`阻塞队列
 
 最后查看一下，完整的三个创建线程的方法
 
@@ -333,26 +361,26 @@ public ScheduledThreadPoolExecutor(int corePoolSize) {
 
 
 
-## 线程池的重要参数
+## 4、线程池的重要参数
 
 ![image-20200317183600957](./images/image-20200317183600957.png)
 
 线程池在创建的时候，一共有7大参数
 
-- corePoolSize：核心线程数，线程池中的常驻核心线程数
+- `corePoolSize`：核心线程数，线程池中的常驻核心线程数
   - 在创建线程池后，当有请求任务来之后，就会安排池中的线程去执行请求任务，近似理解为今日当值线程
   - 当线程池中的线程数目达到corePoolSize后，就会把到达的队列放到缓存队列中
-- maximumPoolSize：线程池能够容纳同时执行的最大线程数，此值必须大于等于1、
+- `maximumPoolSize`：线程池能够容纳同时执行的最大线程数，此值必须大于等于1、
   - 相当有扩容后的线程数，这个线程池能容纳的最多线程数
-- keepAliveTime：多余的空闲线程存活时间
+- `keepAliveTime`：多余的空闲线程存活时间
   - 当线程池数量超过corePoolSize时，当空闲时间达到keepAliveTime值时，多余的空闲线程会被销毁，直到只剩下corePoolSize个线程为止
   - 默认情况下，只有当线程池中的线程数大于corePoolSize时，keepAliveTime才会起作用
-- unit：keepAliveTime的单位
-- workQueue：任务队列，被提交的但未被执行的任务（类似于银行里面的候客区）
-  - LinkedBlockingQueue：链表阻塞队列
-  - SynchronousBlockingQueue：同步阻塞队列
-- threadFactory：表示生成线程池中工作线程的线程工厂，用于创建线程池 `一般用默认即可`。
-- handler：拒绝策略，表示当队列满了并且工作线程大于线程池的最大线程数（maximumPoolSize3）时，如何来拒绝请求执行的Runnable的策略
+- `unit`：keepAliveTime的单位
+- `workQueue`：任务队列，被提交的但未被执行的任务（类似于银行里面的候客区）
+  - `LinkedBlockingQueue`：链表阻塞队列
+  - `SynchronousBlockingQueue`：同步阻塞队列
+- `threadFactory`：表示生成线程池中工作线程的线程工厂，用于创建线程池 `一般用默认即可`。
+- `andler`：拒绝策略，表示当队列满了并且工作线程大于线程池的最大线程数（maximumPoolSize）时，如何来拒绝请求执行的Runnable的策略
 
 当营业窗口和阻塞队列中都满了时候，就需要设置拒绝策略
 
@@ -360,18 +388,18 @@ public ScheduledThreadPoolExecutor(int corePoolSize) {
 
 
 
-## 拒绝策略
+## 5、拒绝策略
 
 以下所有拒绝策略都实现了RejectedExecutionHandler接口
 
-- AbortPolicy：默认，直接抛出RejectedExcutionException异常，阻止系统正常运行
-- DiscardPolicy：直接丢弃任务，不予任何处理也不抛出异常，如果运行任务丢失，这是一种好方案
-- CallerRunsPolicy：该策略既不会抛弃任务，也不会抛出异常，而是将某些任务回退到调用者
-- DiscardOldestPolicy：抛弃队列中等待最久的任务，然后把当前任务加入队列中尝试再次提交当前任务
+- `AbortPolicy`：默认，直接抛出RejectedExcutionException异常，阻止系统正常运行
+- `DiscardPolicy`：直接丢弃任务，不予任何处理也不抛出异常，如果运行任务丢失，这是一种好方案
+- `CallerRunsPolicy`：该策略既不会抛弃任务，也不会抛出异常，而是将某些任务回退到调用者
+- `DiscardOldestPolicy`：抛弃队列中等待最久的任务，然后把当前任务加入队列中尝试再次提交当前任务
 
-## 线程池底层工作原理
+## 6、线程池底层工作原理
 
-### 线程池运行架构图
+### 6.1、线程池运行架构图
 
 ![image-20200318154414717](./images/image-20200318154414717.png)
 
@@ -403,7 +431,7 @@ public ScheduledThreadPoolExecutor(int corePoolSize) {
 4. 假设受理窗口已经达到最大数，并且请求数还是不断递增，此时候客区和线程池都已经满了，为了防止大量请求冲垮线程池，已经需要开启拒绝策略
 5. 临时增加的线程会因为超过了最大存活时间，就会销毁，最后从最大数削减到核心数
 
-## 为什么不用默认创建的线程池？
+## 7、为什么不用默认创建的线程池？
 
 线程池创建的方法有：固定数的，单一的，可变的，那么在实际开发中，应该使用哪个？
 
@@ -422,10 +450,13 @@ public ScheduledThreadPoolExecutor(int corePoolSize) {
     - CacheThreadPool和ScheduledThreadPool
       - 运行的请求队列长度为：Integer.MAX_VALUE，线程数上限太大导致oom
 
-## 手写线程池
+## 8、手写线程池
 
-> 4种拒绝策略
-### 1、采用默认拒绝策略
+::: tip
+4种拒绝策略
+::::
+
+### 8.1、采用默认拒绝策略
 
 从上面我们知道，因为默认的Executors创建的线程池，底层都是使用LinkBlockingQueue作为阻塞队列的，而LinkBlockingQueue虽然是有界的，但是它的界限是 Integer.MAX_VALUE 大概有20多亿，可以相当是无界的了，因此我们要使用ThreadPoolExecutor自己手动创建线程池，然后指定阻塞队列的大小
 
@@ -490,7 +521,7 @@ java.util.concurrent.RejectedExecutionException: Task com.moxi.interview.study.t
 
 触发条件是，请求的线程大于 阻塞队列大小 + 最大线程数 = 8 的时候，也就是说第9个线程来获取线程池中的线程时，就会抛出异常从而报错退出。
 
-### 2、采用CallerRunsPolicy拒绝策略
+### 8.2、采用CallerRunsPolicy拒绝策略
 
 当我们更好其它的拒绝策略时，采用CallerRunsPolicy拒绝策略，也称为回退策略，就是把任务丢回原来的请求开启线程着，我们看运行结果
 
@@ -509,7 +540,7 @@ pool-1-thread-1	 给用户:2 办理业务
 
 我们发现，输出的结果里面出现了main线程，因为线程池出发了拒绝策略，把任务回退到main线程，然后main线程对任务进行处理
 
-### 3、采用 DiscardPolicy 拒绝策略
+### 8.3、采用 DiscardPolicy 拒绝策略
 
 ```
 pool-1-thread-1	 给用户:0 办理业务
@@ -524,7 +555,7 @@ pool-1-thread-3	 给用户:3 办理业务
 
 采用DiscardPolicy拒绝策略会，线程池会自动把后面的任务都直接丢弃，也不报异常，当任务无关紧要的时候，可以采用这个方式
 
-### 4、采用DiscardOldestPolicy拒绝策略
+### 8.4、采用DiscardOldestPolicy拒绝策略
 
 ```
 pool-1-thread-1	 给用户:0 办理业务
@@ -539,9 +570,9 @@ pool-1-thread-5	 给用户:7 办理业务
 
 这个策略和刚刚差不多，会把最久的队列中的任务替换掉
 
-## 线程池的合理参数
+## 9、线程池的合理参数 （重要）
 
-生产环境中如何配置 corePoolSize 和 maximumPoolSize
+生产环境中如何配置 `corePoolSize` 和` maximumPoolSize`
 
 这个是根据具体业务来配置的，分为CPU密集型和IO密集型
 
@@ -555,16 +586,14 @@ CPU密集任务只有在真正的多核CPU上才可能得到加速（通过多�
 
 CPU密集型任务配置尽可能少的线程数量：
 
-一般公式：CPU核数 + 1个线程数
+一般公式：`CPU核数 + 1个线程数`
 
 
 
 - IO密集型
 
 
-
 由于IO密集型任务线程并不是一直在执行任务，则可能多的线程，如 CPU核数 * 2
-
 
 
 IO密集型，即该任务需要大量的IO操作，即大量的阻塞
@@ -577,14 +606,14 @@ IO密集型，即该任务需要大量的IO操作，即大量的阻塞
 
 IO密集时，大部分线程都被阻塞，故需要多配置线程数：
 
-参考公式：CPU核数 / (1 - 阻塞系数)      阻塞系数在0.8 ~ 0.9左右
+参考公式：`CPU核数 / (1 - 阻塞系数) `     阻塞系数在0.8 ~ 0.9左右
 
-例如：8核CPU：8/ (1 - 0.9) = 80个线程数
+例如：`8核CPU：8/ (1 - 0.9) = 80个线程数`
 
 - Runtime.getRuntime().availableProcessors()/(1 - 0.9)
 
 
-## 工作中的使用
+## 10、工作中的使用
 
 https://blog.csdn.net/PurineKing/article/details/128776030
 
