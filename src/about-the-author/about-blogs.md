@@ -53,7 +53,12 @@ npm i -D vuepress-theme-hope
 1. 首先通过 git remote -v 查看您要同步的仓库的远程库列表。Gitee和GitHub少了就添加
 ```shell
 git remote add 远程库名 远程库地址
-eg: git remote add gitee git@github.com:xxx/xxx.git
+
+git remote add gitee git@gitee.com:cuckoocry/xiaofeipeng.git  
+https://gitee.com/cuckoocry/xiaofeipeng.git  
+
+git remote add github git@github.com:cuckoocry/xiaofeipeng.git  
+https://github.com/cuckoocry/xiaofeipeng.git
 ```
 如果在 add 的时候出现error: Could not remove config section 'remote.xxx'.一类的错误，通过把仓库下.git/config 文件里面的 [remote "xxx"] 删掉或者是用别的远程库名即可。
 
